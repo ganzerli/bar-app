@@ -1,0 +1,31 @@
+// when defining the brekpoint in the sass stylesheet declaration this mixin selects the right media query for the element, and takes the content to show if the screen is in the scope of the media query
+// rem sometimes fails to compile in some browser and when taking the user setting of the browsers is better to use em
+//  1em = 16px;
+@mixin responsiveFor($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      //600px , 600px / 16px = 37.5em
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-portrait {
+    @media (max-width: 56.25em) {
+      //900px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-landscape {
+    @media (max-width: 75em) {
+      //1200px
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) {
+      // 1800 +
+      @content;
+    }
+  }
+}

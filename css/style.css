@@ -1,0 +1,69 @@
+.field-invalid {
+  box-shadow: 0 0 3px 1px #fa3333; }
+
+.alert {
+  background-color: #ffcdb6;
+  border: 1px solid #ff9d4c; }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  /*
+  @include responsiveFor(phone) {
+    font-size: 50%;
+  }
+  */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+body {
+  box-sizing: border-box;
+  font-size: 1.5rem; }
+
+ul {
+  list-style: none; }
+
+.api-res-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap; }
+
+.api-res-drink-element {
+  position: relative;
+  width: 20rem;
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 3rem; }
+
+.api-res-drink-content {
+  text-align: center;
+  color: #666666;
+  position: relative; }
+
+.api-res-figure {
+  position: relative;
+  display: inline-block; }
+
+.api-res-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block; }
+
+.form-drinks-input-text {
+  border: rgba(0, 0, 0, 0.1) solid 1px;
+  outline: none; }

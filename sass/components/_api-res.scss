@@ -1,0 +1,31 @@
+.api-res {
+  &-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  &-drink {
+    &-element {
+      position: relative;
+      width: 20rem;
+      box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
+      margin-bottom: 3rem;
+    }
+    &-content {
+      text-align: center;
+      color: rgb(102, 102, 102);
+      position: relative;
+    }
+  }
+  &-figure {
+    position: relative;
+    display: inline-block;
+  }
+  &-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
