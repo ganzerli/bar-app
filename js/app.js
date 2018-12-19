@@ -3,21 +3,30 @@ const ui = new UI(); /*it creates elements for the ui*/
 const drinksApi = new DrinksApi();
 const drinksDB = new DrinksDB();
 // Event listeness
-function eventListenesr() {
+function eventListeners() {
   // add eventt listeners when submit
   const form = document.querySelector("#search-drinks-form");
   if (form) {
     // for pages without form
     form.addEventListener("submit", getDrinks);
   }
+
+  // delegation for the event listeners
+  const resultContainer = document.getElementById("result");
+  if (resultContainer) {
+    // to add the event listeners also to the buttons, that are not in the DOM at the pageload
+    resultContainer.addEventListener("click", delegationForButtons);
+  }
 }
 
-eventListenesr();
+eventListeners();
 
 // get Drinks function
 function getDrinks(e) {
   e.preventDefault();
-
+  // clear the result
+  const result = document.querySelector("#result");
+  result.innerHTML = "";
   const drinkToSearch = document.querySelector("#drinks-input").value;
   const requestType = document.querySelector("#drinks-input").name;
 
@@ -76,4 +85,25 @@ function getDrinks(e) {
       );
     }
   } //end else form invalid
+}
+
+// delegation for the result area
+function delegationForButtons(e) {
+  e.preventDefault();
+  if (e.target.classList.contains("open-modal")) {
+    getIdDrinkDetails(e.target.id);
+  } else {
+    console.log("clicked somewhere else");
+  }
+}
+
+// query the api and get the details in the result div
+function getIdDrinkDetails(id) {
+  // query the api
+  drinksApi.getDrinkById(id).then(res => {
+    //taking the response object
+    const AllDetails = { ...res.drinks[0] };
+
+    ui.showDetails(AllDetails);
+  });
 }

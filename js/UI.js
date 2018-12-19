@@ -131,6 +131,7 @@ class UI {
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     return div;
   }
+
   wrapElementImgTitile(drinkObject) {
     let div = document.createElement("div");
     div.classList.add("api-res-drink-element");
@@ -145,12 +146,34 @@ class UI {
     />
   </figure>
   <h3 class="api-res-name">${drinkObject.strDrink}</h3>
-  <button class="open-modal">Open Modal</button>
+  <button class='open-modal' id='${drinkObject.idDrink}' >Open details</button>
   <span class="api-res-extrainfo">${drinkObject.strAlcoholic}</span>
   <span class="api-res-extrainfo">${drinkObject.strCategory}</span>
 </div>
     `;
     return div;
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
+  }
+
+  showDetails(detailsObject) {
+    console.log(detailsObject);
+    const result = document.querySelector("#result");
+    // clear result and make a template for the new one..
+    result.innerHTML = "";
+
+    // loop throught the keys of the object
+    for (let key in detailsObject) {
+      // check if the data is ok
+      if (detailsObject.hasOwnProperty(key)) {
+        if (detailsObject[key] !== "" && detailsObject[key] !== null) {
+          const div = document.createElement("div");
+          div.innerHTML = detailsObject[key];
+          result.classList.remove("api-res-wrapper");
+          result.appendChild(div);
+          console.log(detailsObject[key]);
+        } else {
+        }
+      }
+    }
   }
 } // end class

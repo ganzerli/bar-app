@@ -52,4 +52,12 @@ class DrinksApi {
     const drinks = await apiResponse.json();
     return { ...drinks };
   }
+
+  async getDrinkById(id) {
+    const apiResponse = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+    );
+    const details = await apiResponse.json();
+    return { ...details };
+  }
 }
