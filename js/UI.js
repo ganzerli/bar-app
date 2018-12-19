@@ -213,7 +213,7 @@ class UI {
       ${fillList(detailsObject)}
     </li>
   </ul>
-  <button class='save-drink' id='${detailsObject.idDrink}' >SAVE</button>
+  <button class='save-drink' name='${detailsObject.idDrink}' >SAVE</button>
   <p class="api-res-info">EXTRA INFORMATION:</p>
   <span class="api-res-extrainfo">${detailsObject.strAlcoholic}</span>
   <span class="api-res-extrainfo">${detailsObject.strCategory}</span>
@@ -231,7 +231,6 @@ class UI {
   populateForm() {
     const name = document.querySelector("#drinks-input").name;
     if (name === "search-by-category") {
-      console.log("dom loaded and found" + name);
       //query the api to give to the form the categories
       drinksApi.getCategoryList().then(res => {
         //taking the array from the resp
@@ -241,16 +240,10 @@ class UI {
           const element = category.strCategory;
 
           // creating the new elements for the form
-          const option = document.createElement("option");
-          option.textContent = element;
-          //for the value to use for queriing the db we need _ instead of space
-          option.value = element.split(" ").join("_");
-          console.log(option.value);
-          document.querySelector("#drinks-input").appendChild(option);
+          makeOptions(element);
         });
       });
     } else if (name === "search-by-ingredients") {
-      console.log("dom loaded and found" + name);
       //query the api to give to the form the categories
       drinksApi.getIngredientsList().then(res => {
         //taking the array from the resp
@@ -261,16 +254,19 @@ class UI {
 
           const element = ingredient.strIngredient1;
           // creating the new elements for the form
-          const option = document.createElement("option");
-          option.textContent = element;
-          //for the value to use for queriing the db we need _ instead of space
-          option.value = element.split(" ").join("_");
-          console.log(option.value);
-          document.querySelector("#drinks-input").appendChild(option);
+          makeOptions(element);
         });
       });
     } else {
       //default
     }
+    const makeOptions = element => {
+      const option = document.createElement("option");
+      option.textContent = element;
+      //for the value to use for queriing the db we need _ instead of space
+      option.value = element.split(" ").join("_");
+
+      document.querySelector("#drinks-input").appendChild(option);
+    };
   }
 } // end class

@@ -120,13 +120,15 @@ function popupListener(e) {
   e.preventDefault();
   //when clicking check where is been clicked
   if (e.target.classList.contains("popup-content")) {
-    console.log("clicked on content");
+    // if clicked on the content the popup stays
+  } else if (e.target.classList.contains("save-drink")) {
+    // clicking the button the object get saved
+    e.target.classList.add("button-saved");
+    console.log("SAVE" + e.target.name);
   } else {
-    // close modal
-    console.log("clicked on the body o the modal");
+    // clicking ouside the modal closes
     e.target.classList.remove("popup-active");
   }
-  console.log(e);
 }
 
 function DOMReady() {
