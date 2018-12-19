@@ -17,6 +17,11 @@ function eventListeners() {
     // to add the event listeners also to the buttons, that are not in the DOM at the pageload
     resultContainer.addEventListener("click", delegationForButtons);
   }
+  // event listener for the popup
+  const popup = document.querySelector("#popup-details");
+  if (popup) {
+    popup.addEventListener("click", popupListener);
+  }
 }
 
 eventListeners();
@@ -103,7 +108,20 @@ function getIdDrinkDetails(id) {
   drinksApi.getDrinkById(id).then(res => {
     //taking the response object
     const AllDetails = { ...res.drinks[0] };
-
     ui.showDetails(AllDetails);
   });
+}
+
+/// popup listener delegation
+function popupListener(e) {
+  e.preventDefault();
+  //when clicking check where is been clicked
+  if (e.target.classList.contains("popup-content")) {
+    console.log("clicked on content");
+  } else {
+    // close modal
+    console.log("clicked on the body o the modal");
+    e.target.classList.remove("popup-active");
+  }
+  console.log(e);
 }

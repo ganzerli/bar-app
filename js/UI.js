@@ -157,23 +157,73 @@ class UI {
 
   showDetails(detailsObject) {
     console.log(detailsObject);
-    const result = document.querySelector("#result");
-    // clear result and make a template for the new one..
-    result.innerHTML = "";
+    //clear popup
+    const popup = document.querySelector("#popup-details");
+    popup.innerHTML = "";
+    // make popup template
+    this.popupTemplate(popup, detailsObject);
+    popup.classList.add("popup-active");
+  }
 
-    // loop throught the keys of the object
-    for (let key in detailsObject) {
-      // check if the data is ok
-      if (detailsObject.hasOwnProperty(key)) {
-        if (detailsObject[key] !== "" && detailsObject[key] !== null) {
-          const div = document.createElement("div");
-          div.innerHTML = detailsObject[key];
-          result.classList.remove("api-res-wrapper");
-          result.appendChild(div);
-          console.log(detailsObject[key]);
-        } else {
+  popupTemplate(popup, detailsObject) {
+    const fillList = drinkObject => {
+      // make an array to store the pars
+      let arr = [];
+      for (let i = 1; i < 16; i++) {
+        //making an obkect to store the 2 values
+        if (drinkObject[`strIngredient${i}`] !== "") {
+          let ingredientQuantity = {};
+          ingredientQuantity.ingredient = drinkObject[`strIngredient${i}`];
+          ingredientQuantity.quantity = drinkObject[`strMeasure${i}`];
+          arr.push(ingredientQuantity);
         }
       }
-    }
+
+      let listHtml = "";
+      arr.forEach(iq => {
+        listHtml += `
+          <li class="api-res-list-element"><span>${
+            iq.ingredient
+          }</span>-<span>${iq.quantity}</span></li>
+          `;
+      });
+
+      return listHtml;
+    };
+    // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
+    popup.innerHTML = `
+  
+    <div class="popup-content">
+  <h3 class="api-res-name">${detailsObject.strDrink}</h3>
+  <figure class="popup-figure">
+    <img
+      src="${detailsObject.strDrinkThumb}"
+      class="popup-img"
+      alt="${detailsObject.strDrink}"
+    />
+  </figure>
+  <h4 class="api-res-instructions-title">${detailsObject.strGlass}</h4>
+  <h4 class="api-res-instructions-title">INSTRUCITONLS</h4>
+  <p class="api-res-instructions-text">
+    all the instructions: ${detailsObject.strInstructions}
+  </p>
+  <ul class="api-res-list">
+    <li class="api-res-list-element api-res-list-title">INGREDIENTS</li>
+    <li class="api-res-list-element api-res-list-title">
+      ${fillList(detailsObject)}
+    </li>
+  </ul>
+  <button class='save-drink' id='${detailsObject.idDrink}' >SAVE</button>
+  <p class="api-res-info">EXTRA INFORMATION:</p>
+  <span class="api-res-extrainfo">${detailsObject.strAlcoholic}</span>
+  <span class="api-res-extrainfo">${detailsObject.strCategory}</span>
+</div>
+    
+    
+    
+
+    
+    `;
+    // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
   }
 } // end class
