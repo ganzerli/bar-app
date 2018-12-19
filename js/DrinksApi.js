@@ -14,12 +14,14 @@ class DrinksApi {
     const apiResponse = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
     );
+
     const drinks = await apiResponse.json();
+
     return { ...drinks };
   }
 
   // fetch asyncronous request to the API if alcoholic or not
-  async getDrinksAlcoholic(isAlcoholic = true) {
+  async getDrinksAlcoholic(isAlcoholic) {
     let apiResponse;
     if (isAlcoholic) {
       apiResponse = await fetch(
@@ -35,19 +37,12 @@ class DrinksApi {
   }
 
   // fetch asyncronous request to the API for CATEGORY
-  async getDrinksByCategory(category = true) {
-    let apiResponse;
-    if (category) {
-      //load ORDINARY DRINK
-      apiResponse = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink`
-      );
-    } else {
-      //load COCKTAIL
-      apiResponse = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail`
-      );
-    }
+  async getDrinksByCategory(value) {
+    //load ORDINARY DRINK
+    const apiResponse = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${value}`
+    );
+
     //making the object for the response from the resp array of the API
     const drinks = await apiResponse.json();
     return { ...drinks };
@@ -59,5 +54,21 @@ class DrinksApi {
     );
     const details = await apiResponse.json();
     return { ...details };
+  }
+  // get list of caategory
+  async getCategoryList() {
+    const apiResponse = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`
+    );
+    const categories = await apiResponse.json();
+    return { ...categories };
+  }
+  // get list of ingredients
+  async getIngredientsList() {
+    const apiResponse = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
+    );
+    const ingredients = await apiResponse.json();
+    return { ...ingredients };
   }
 }

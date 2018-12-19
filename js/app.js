@@ -4,6 +4,8 @@ const drinksApi = new DrinksApi();
 const drinksDB = new DrinksDB();
 // Event listeness
 function eventListeners() {
+  //document ready
+  document.addEventListener("DOMContentLoaded", DOMReady);
   // add eventt listeners when submit
   const form = document.querySelector("#search-drinks-form");
   if (form) {
@@ -47,8 +49,9 @@ function getDrinks(e) {
     switch (requestType) {
       // taking the right obkect from the right API querying the right route
       case "search-by-alcoholic":
-        console.log(requestType);
-        promise = drinksApi.getDrinksAlcoholic(false);
+        promise = drinksApi.getDrinksAlcoholic(
+          document.querySelector("#drinks-input").checked
+        );
         break;
       case "search-by-ingredients":
         console.log(requestType);
@@ -56,7 +59,7 @@ function getDrinks(e) {
         break;
       case "search-by-category":
         console.log(requestType);
-        promise = drinksApi.getDrinksByCategory(false);
+        promise = drinksApi.getDrinksByCategory(drinkToSearch);
         break;
       case "search-by-name":
         console.log(requestType);
@@ -124,4 +127,8 @@ function popupListener(e) {
     e.target.classList.remove("popup-active");
   }
   console.log(e);
+}
+
+function DOMReady() {
+  ui.populateForm();
 }

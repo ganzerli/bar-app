@@ -226,4 +226,51 @@ class UI {
     `;
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
   }
+
+  // populate the form
+  populateForm() {
+    const name = document.querySelector("#drinks-input").name;
+    if (name === "search-by-category") {
+      console.log("dom loaded and found" + name);
+      //query the api to give to the form the categories
+      drinksApi.getCategoryList().then(res => {
+        //taking the array from the resp
+        const categoriesArr = [...res.drinks];
+        //looping throught the array and get the category
+        categoriesArr.forEach(category => {
+          const element = category.strCategory;
+
+          // creating the new elements for the form
+          const option = document.createElement("option");
+          option.textContent = element;
+          //for the value to use for queriing the db we need _ instead of space
+          option.value = element.split(" ").join("_");
+          console.log(option.value);
+          document.querySelector("#drinks-input").appendChild(option);
+        });
+      });
+    } else if (name === "search-by-ingredients") {
+      console.log("dom loaded and found" + name);
+      //query the api to give to the form the categories
+      drinksApi.getIngredientsList().then(res => {
+        //taking the array from the resp
+        const ingredientsArr = [...res.drinks];
+        //looping throught the array and get the category
+        ingredientsArr.forEach((ingredient, index) => {
+          //console.log(ingredient.strIngredient1);
+
+          const element = ingredient.strIngredient1;
+          // creating the new elements for the form
+          const option = document.createElement("option");
+          option.textContent = element;
+          //for the value to use for queriing the db we need _ instead of space
+          option.value = element.split(" ").join("_");
+          console.log(option.value);
+          document.querySelector("#drinks-input").appendChild(option);
+        });
+      });
+    } else {
+      //default
+    }
+  }
 } // end class
