@@ -26,15 +26,50 @@ class UI {
     }, 3000);
   }
 
-  respArrayToHtml(respArray) {
+  respArrayToHtml(respArray, requestType) {
+    // to have a different template if the response is different
     const result = document.querySelector("#result");
+    switch (requestType) {
+      case "search-by-name":
+        respArray.forEach(drink => {
+          //creates a div with the info in the response array from app.js
+          const element = this.wrapElementName(drink);
+          result.appendChild(element);
+        });
+        break;
+      case "search-by-ingredients":
+        respArray.forEach(drink => {
+          //creates a div with the info in the response array from app.js
+          const element = this.wrapElementImgTitile(drink);
+          result.appendChild(element);
+        });
+        break;
+      case "search-by-alcoholic":
+        respArray.forEach(drink => {
+          //creates a div with the info in the response array from app.js
+          const element = this.wrapElementImgTitile(drink);
+          result.appendChild(element);
+        });
+        break;
+      case "search-by-category":
+        respArray.forEach(drink => {
+          //creates a div with the info in the response array from app.js
+          const element = this.wrapElementImgTitile(drink);
+          result.appendChild(element);
+        });
+        break;
+      default:
+        console.log("NO FEATURES IN UI.JS");
+    }
+    /*
     respArray.forEach(drink => {
-      const element = this.wrapElement(drink);
+      const element = this.wrapElementName(drink);
       result.appendChild(element);
-    });
+    }); */
   }
 
-  wrapElement(drinkObject) {
+  // functions for single template
+  wrapElementName(drinkObject) {
     const fillList = drinkObject => {
       // make an array to store the pars
       let arr = [];
@@ -56,7 +91,7 @@ class UI {
           }</span>-<span>${iq.quantity}</span></li>
           `;
       });
-      console.log(arr);
+
       return listHtml;
     };
 
@@ -67,8 +102,6 @@ class UI {
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     div.innerHTML = `
-    
-    
     <div class="api-res-drink-content">
     <h3 class="api-res-name">${drinkObject.strDrink}</h3>
     <figure class="api-res-figure">
@@ -92,14 +125,32 @@ class UI {
     <span class="api-res-extrainfo">${drinkObject.strAlcoholic}</span>
     <span class="api-res-extrainfo">${drinkObject.strCategory}</span>
   </div>
-  
-  
-  
-    
     `;
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     return div;
   }
-}
+  wrapElementImgTitile(drinkObject) {
+    let div = document.createElement("div");
+    div.classList.add("api-res-drink-element");
+    // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
+    div.innerHTML = `
+<div class="api-res-drink-content">
+  <figure class="api-res-figure">
+    <img
+      src="${drinkObject.strDrinkThumb}"
+      class="api-res-img"
+      alt="${drinkObject.strDrink}"
+    />
+  </figure>
+  <h3 class="api-res-name">${drinkObject.strDrink}</h3>
+  <button class="open-modal">Open Modal</button>
+  <span class="api-res-extrainfo">${drinkObject.strAlcoholic}</span>
+  <span class="api-res-extrainfo">${drinkObject.strCategory}</span>
+</div>
+    `;
+    return div;
+    // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
+  }
+} // end class
