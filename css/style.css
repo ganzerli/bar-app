@@ -57,6 +57,9 @@ ul {
   .popup-img {
     max-height: 30vh; }
 
+.button-saved {
+  color: red; }
+
 .api-res-wrapper {
   display: flex;
   flex-direction: row;

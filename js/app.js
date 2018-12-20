@@ -115,7 +115,7 @@ function getIdDrinkDetails(id) {
   });
 }
 
-/// popup listener delegation
+/// popup listener delegation to close poppup and save
 function popupListener(e) {
   e.preventDefault();
   //when clicking check where is been clicked
@@ -123,8 +123,34 @@ function popupListener(e) {
     // if clicked on the content the popup stays
   } else if (e.target.classList.contains("save-drink")) {
     // clicking the button the object get saved
-    e.target.classList.add("button-saved");
-    console.log("SAVE" + e.target.name);
+    if (e.target.classList.contains("button-saved")) {
+      //remove the class
+      e.target.classList.remove("button-saved");
+      //and remove from favourites
+      drinksDB.remonveFromDb(e.target.name);
+
+      console.log("REMOVE" + e.target.name);
+    } else {
+      e.target.classList.add("button-saved");
+      console.log("SAVE" + e.target.name);
+      //get info from html element
+      const parentElement = e.target.parentElement;
+      //get attributes of element , prepare the name as the api works
+      const name = parentElement
+        .getAttribute("name")
+        .split(" ")
+        .join("_");
+      const image = parentElement.getAttribute("image");
+      //set info
+      const drinkInfo = {
+        id: e.target.name, //name attribute of the button is the id of the drink
+        name: name,
+        img: image,
+        comment: ""
+      };
+      console.log("saving" + drinkInfo);
+      drinksDB.saveInDb(drinkInfo);
+    }
   } else {
     // clicking ouside the modal closes
     e.target.classList.remove("popup-active");
@@ -132,5 +158,10 @@ function popupListener(e) {
 }
 
 function DOMReady() {
-  ui.populateForm();
+  if (document.querySelector("#main-favourites-reference")) {
+    ui.loadFavourites();
+  } else {
+    // or the ui calssgives problems if in other pages
+    ui.populateForm();
+  }
 }

@@ -190,10 +190,13 @@ class UI {
 
       return listHtml;
     };
+    this.favouriteClassCheck(detailsObject.idDrink);
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     popup.innerHTML = `
   
-    <div class="popup-content">
+    <div class="popup-content" id="popup-info" name="${
+      detailsObject.strDrink
+    }" image="${detailsObject.strDrinkThumb}" >
   <h3 class="api-res-name">${detailsObject.strDrink}</h3>
   <figure class="popup-figure">
     <img
@@ -213,7 +216,10 @@ class UI {
       ${fillList(detailsObject)}
     </li>
   </ul>
-  <button class='save-drink' name='${detailsObject.idDrink}' >SAVE</button>
+  <button class='save-drink ${this.favouriteClassCheck(
+    detailsObject.idDrink,
+    "button-saved"
+  )}' name='${detailsObject.idDrink}' >SAVE</button>
   <p class="api-res-info">EXTRA INFORMATION:</p>
   <span class="api-res-extrainfo">${detailsObject.strAlcoholic}</span>
   <span class="api-res-extrainfo">${detailsObject.strCategory}</span>
@@ -268,5 +274,54 @@ class UI {
 
       document.querySelector("#drinks-input").appendChild(option);
     };
+  }
+
+  // return the class facourite if there is or ""
+  favouriteClassCheck(toCheck, classToAdd) {
+    const favourites = drinksDB.getFromDB();
+    // loop throught the array
+    for (let i in favourites) {
+      if (favourites[i].id === toCheck) {
+        console.log("favourite");
+        return classToAdd;
+      }
+    }
+    console.log("not favourite");
+    return "";
+  }
+
+  //load favourites
+  loadFavourites() {
+    ///////////////////////////////////////////////////////////TEMPLATE
+    const favTemplate = drinkObj => {
+      return `
+      <div class="api-res-drink-content">
+      <figure class="api-res-figure">
+        <img
+          src="${drinkObj.img}"
+          class="api-res-img"
+          alt="${drinkObj.strDrink}"
+        />
+      </figure>
+      <h3 class="api-res-name">${drinkObj.name}</h3>
+      <button class="open-modal" id="${drinkObj.id}">Open details</button>
+      <span class="api-res-extrainfo">${drinkObj.comment}</span>
+    </div>
+       `;
+    };
+    ////////////////////////////////////////////////////////////
+    const drinks = drinksDB.getFromDB();
+    console.log(drinks);
+    //watch which object has the id same, record the object or index, and remove
+
+    // loop throught the array
+    for (let i in drinks) {
+      //if the id of the nth object math
+      const child = document.createElement("div");
+      child.classList.add("api-res-drink-element");
+      child.innerHTML = favTemplate(drinks[i]);
+      console.log(drinks[i]);
+      document.querySelector("#result").appendChild(child);
+    }
   }
 } // end class
