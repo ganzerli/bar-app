@@ -297,11 +297,9 @@ class UI {
       return `
       <div class="api-res-drink-content">
       <figure class="api-res-figure">
-        <img
-          src="${drinkObj.img}"
-          class="api-res-img"
-          alt="${drinkObj.strDrink}"
-        />
+        <img src="${drinkObj.img}" class="api-res-img" alt="${
+        drinkObj.strDrink
+      }"/>
       </figure>
       <h3 class="api-res-name">${drinkObj.name}</h3>
       <button class="open-modal" id="${drinkObj.id}">Open details</button>
@@ -311,9 +309,7 @@ class UI {
       <textarea class="textarea-comment" rows="1" cols="10">comment:${
         drinkObj.comment
       }</textarea> 
-      <p class="api-res-extrainfo">${drinkObj.comment}
-      comment:
-      </p>
+      <p class="api-res-extrainfo">${drinkObj.comment}</p>
     </div>
        `;
     };

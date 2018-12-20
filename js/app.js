@@ -23,6 +23,12 @@ function eventListeners() {
   if (popup) {
     popup.addEventListener("click", popupListener);
   }
+
+  // event listener for clear storage
+  const clear = document.querySelector("#clear-favourites");
+  if (clear) {
+    clear.addEventListener("click", clearFavourites);
+  }
 }
 
 eventListeners();
@@ -103,34 +109,6 @@ function delegationForButtons(e) {
     comment(e.target);
   }
 }
-function comment(element) {
-  const parent = element.parentElement;
-  const textarea = parent.querySelector(".textarea-comment");
-
-  // check inf the textarea is active the button saves the comment
-  if (parent.querySelector(".textarea-comment-active")) {
-    // take the comment from the commetn html
-    const comment = parent.querySelector(".api-res-extrainfo").innerHTML || "";
-    //set as text of the comment in the paragraph
-    parent.querySelector(".api-res-extrainfo").innerHTML = textarea.value;
-    //get the id
-    const id = element.getAttribute("drinkid");
-    // save new comment
-
-    drinksDB.comment(id, textarea.value);
-
-    // close the textarea
-    textarea.classList.remove("textarea-comment-active");
-
-    console.log("done pressed");
-  } else {
-    // it opens the comment
-    textarea.classList.add("textarea-comment-active");
-    element.innerHTML = "done!";
-    console.log(element, textarea);
-    // modify display textarea
-  }
-}
 
 // query the api and get the details in the result div
 function getIdDrinkDetails(id) {
@@ -191,5 +169,35 @@ function DOMReady() {
   } else {
     // or the ui calssgives problems if in other pages
     ui.populateForm();
+  }
+}
+
+function clearFavourites() {
+  drinksDB.clearDB();
+  document.querySelector("#result").innerHTML = "";
+}
+
+function comment(element) {
+  const parent = element.parentElement;
+  const textarea = parent.querySelector(".textarea-comment");
+
+  // check inf the textarea is active the button saves the comment
+  if (parent.querySelector(".textarea-comment-active")) {
+    // take the comment from the commetn html
+    const comment = parent.querySelector(".api-res-extrainfo").innerHTML || "";
+    //set as text of the comment in the paragraph
+    parent.querySelector(".api-res-extrainfo").innerHTML = textarea.value;
+    //get the id
+    const id = element.getAttribute("drinkid");
+    // save new comment
+    drinksDB.comment(id, textarea.value);
+    // close the textarea
+    textarea.classList.remove("textarea-comment-active");
+    //set the html button back
+    element.innerHTML = "comment";
+  } else {
+    // it opens the comment
+    textarea.classList.add("textarea-comment-active");
+    element.innerHTML = "done!";
   }
 }
