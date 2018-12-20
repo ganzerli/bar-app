@@ -12,7 +12,6 @@ function eventListeners() {
     // for pages without form
     form.addEventListener("submit", getDrinks);
   }
-
   // delegation for the event listeners
   const resultContainer = document.getElementById("result");
   if (resultContainer) {
@@ -100,8 +99,36 @@ function delegationForButtons(e) {
   e.preventDefault();
   if (e.target.classList.contains("open-modal")) {
     getIdDrinkDetails(e.target.id);
+  } else if (e.target.classList.contains("button-comment")) {
+    comment(e.target);
+  }
+}
+function comment(element) {
+  const parent = element.parentElement;
+  const textarea = parent.querySelector(".textarea-comment");
+
+  // check inf the textarea is active the button saves the comment
+  if (parent.querySelector(".textarea-comment-active")) {
+    // take the comment from the commetn html
+    const comment = parent.querySelector(".api-res-extrainfo").innerHTML || "";
+    //set as text of the comment in the paragraph
+    parent.querySelector(".api-res-extrainfo").innerHTML = textarea.value;
+    //get the id
+    const id = element.getAttribute("drinkid");
+    // save new comment
+
+    drinksDB.comment(id, textarea.value);
+
+    // close the textarea
+    textarea.classList.remove("textarea-comment-active");
+
+    console.log("done pressed");
   } else {
-    console.log("clicked somewhere else");
+    // it opens the comment
+    textarea.classList.add("textarea-comment-active");
+    element.innerHTML = "done!";
+    console.log(element, textarea);
+    // modify display textarea
   }
 }
 
@@ -160,6 +187,7 @@ function popupListener(e) {
 function DOMReady() {
   if (document.querySelector("#main-favourites-reference")) {
     ui.loadFavourites();
+    // add event listener for button comment
   } else {
     // or the ui calssgives problems if in other pages
     ui.populateForm();

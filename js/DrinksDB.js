@@ -27,10 +27,6 @@ class DrinksDB {
     }
     //insert new array in local storage
     localStorage.setItem("drinks", JSON.stringify(drinks));
-    console.log("REMOVED " + id);
-    console.log(this.getFromDB());
-
-    //save new array in db
   }
   getFromDB() {
     let drinks;
@@ -45,5 +41,34 @@ class DrinksDB {
     //always returns an array
 
     return drinks;
+  }
+
+  comment(id, comment) {
+    // taking the array in storage
+    const drinks = this.getFromDB();
+    // searching the right id
+
+    for (let i in drinks) {
+      //if the id of the nth object math
+      if (drinks[i].id === id) {
+        //overwrite the value
+        const newValue = {
+          id: id,
+          name: drinks[i].name,
+          img: drinks[i].img,
+          comment: comment
+        };
+        // replace the object at the index
+        drinks.splice(i, 1, newValue);
+      }
+    }
+    // take the new array and set into local storage
+    localStorage.setItem("drinks", JSON.stringify(drinks));
+  }
+
+  clearDB() {
+    if (confirm("are you shure to clear all your favourites?")) {
+      localStorage.clear("drinks");
+    }
   }
 }

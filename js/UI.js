@@ -305,7 +305,15 @@ class UI {
       </figure>
       <h3 class="api-res-name">${drinkObj.name}</h3>
       <button class="open-modal" id="${drinkObj.id}">Open details</button>
-      <span class="api-res-extrainfo">${drinkObj.comment}</span>
+      <button class="button-comment" drinkid="${
+        drinkObj.id
+      }">comment</button> <br/>
+      <textarea class="textarea-comment" rows="1" cols="10">comment:${
+        drinkObj.comment
+      }</textarea> 
+      <p class="api-res-extrainfo">${drinkObj.comment}
+      comment:
+      </p>
     </div>
        `;
     };
