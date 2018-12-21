@@ -2,6 +2,7 @@
 const ui = new UI(); /*it creates elements for the ui*/
 const drinksApi = new DrinksApi();
 const drinksDB = new DrinksDB();
+let popupMemory;
 // Event listeness
 function eventListeners() {
   //document ready
@@ -99,12 +100,24 @@ function getDrinks(e) {
     }
   } //end else form invalid
 }
+// FUNCTION FOR BUTTONS
 
 // delegation for the result area
 function delegationForButtons(e) {
   e.preventDefault();
+  // if btn details get clicked
+
   if (e.target.classList.contains("open-modal")) {
     getIdDrinkDetails(e.target.id);
+    popupMemory = e.target.parentElement.querySelector(".save-drink");
+    console.log(popupMemory);
+  } else if (e.target.classList.contains("save-drink")) {
+    // clicking the button the object get saved
+    if (e.target.classList.contains("button-saved")) {
+      btnRemove(e.target);
+    } else {
+      btnSave(e.target);
+    }
   } else if (e.target.classList.contains("button-comment")) {
     comment(e.target);
   }
@@ -129,34 +142,26 @@ function popupListener(e) {
   } else if (e.target.classList.contains("save-drink")) {
     // clicking the button the object get saved
     if (e.target.classList.contains("button-saved")) {
-      //remove the class
-      e.target.classList.remove("button-saved");
-      //and remove from favourites
-      drinksDB.remonveFromDb(e.target.name);
-
-      console.log("REMOVE" + e.target.name);
+      btnRemove(e.target);
+      // add class also at other button
+      console.log(popupMemory);
+      popupMemory.innerHTML = "SAVE";
+      popupMemory.classList.remove("button-saved");
     } else {
-      e.target.classList.add("button-saved");
-      console.log("SAVE" + e.target.name);
-      //get info from html element
-      const parentElement = e.target.parentElement;
-      //get attributes of element , prepare the name as the api works
-      const name = parentElement
-        .getAttribute("name")
-        .split(" ")
-        .join("_");
-      const image = parentElement.getAttribute("image");
-      //set info
-      const drinkInfo = {
-        id: e.target.name, //name attribute of the button is the id of the drink
-        name: name,
-        img: image,
-        comment: ""
-      };
-      console.log("saving" + drinkInfo);
-      drinksDB.saveInDb(drinkInfo);
+      // add class also at other button
+      btnSave(e.target);
+      console.log(popupMemory);
+      popupMemory.innerHTML = "REMOVE";
+      popupMemory.classList.add("button-saved");
     }
   } else {
+    //refresh the result
+    if (document.querySelector("#main-favourites-reference")) {
+      document.querySelector("#result").innerHTML = "";
+      ui.loadFavourites();
+    } else {
+      //sign as favourite in the result
+    }
     // clicking ouside the modal closes
     e.target.classList.remove("popup-active");
   }
@@ -200,4 +205,34 @@ function comment(element) {
     textarea.classList.add("textarea-comment-active");
     element.innerHTML = "done!";
   }
+}
+
+function btnSave(target) {
+  target.classList.add("button-saved");
+  target.innerHTML = "REMOVE";
+  //get info from html element
+  const parentElement = target.parentElement;
+  //get attributes of element , prepare the name as the api works
+  const name = parentElement
+    .getAttribute("name")
+    .split(" ")
+    .join("_");
+  const image = parentElement.getAttribute("image");
+  //set info
+  const drinkInfo = {
+    id: target.name, //name attribute of the button is the id of the drink
+    name: name,
+    img: image,
+    comment: ""
+  };
+  console.log("saving" + drinkInfo);
+  drinksDB.saveInDb(drinkInfo);
+}
+function btnRemove(target) {
+  target.innerHTML = "SAVE";
+  //remove the class
+  target.classList.remove("button-saved");
+  //and remove from favourites
+  drinksDB.remonveFromDb(target.name);
+  console.log("REMOVE" + target.name);
 }

@@ -102,7 +102,9 @@ class UI {
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     div.innerHTML = `
-    <div class="api-res-drink-content">
+    <div class="api-res-drink-content"   name="${
+      drinkObject.strDrink
+    }" image="${drinkObject.strDrinkThumb}"  >
     <h3 class="api-res-name">${drinkObject.strDrink}</h3>
     <figure class="api-res-figure">
       <img
@@ -121,6 +123,14 @@ class UI {
         drinkObject
       )}</li>
     </ul>
+    <button class='save-drink ${this.favouriteClassCheck(
+      drinkObject.idDrink,
+      "button-saved"
+    )}' name='${drinkObject.idDrink}' >${
+      this.favouriteClassCheck(drinkObject.idDrink, "button-saved")
+        ? "REMOVE"
+        : "SAVE"
+    }</button>
     <p class="api-res-info">EXTRA INFORMATION:</p>
     <span class="api-res-extrainfo">${drinkObject.strAlcoholic}</span>
     <span class="api-res-extrainfo">${drinkObject.strCategory}</span>
@@ -137,7 +147,9 @@ class UI {
     div.classList.add("api-res-drink-element");
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     div.innerHTML = `
-<div class="api-res-drink-content">
+<div class="api-res-drink-content" name="${drinkObject.strDrink}" image="${
+      drinkObject.strDrinkThumb
+    }" >
   <figure class="api-res-figure">
     <img
       src="${drinkObject.strDrinkThumb}"
@@ -147,6 +159,14 @@ class UI {
   </figure>
   <h3 class="api-res-name">${drinkObject.strDrink}</h3>
   <button class='open-modal' id='${drinkObject.idDrink}' >Open details</button>
+  <button class='save-drink ${this.favouriteClassCheck(
+    drinkObject.idDrink,
+    "button-saved"
+  )}' name='${drinkObject.idDrink}' >${
+      this.favouriteClassCheck(drinkObject.idDrink, "button-saved")
+        ? "REMOVE"
+        : "SAVE"
+    }</button>
   <span class="api-res-extrainfo">${drinkObject.strAlcoholic}</span>
   <span class="api-res-extrainfo">${drinkObject.strCategory}</span>
 </div>
@@ -219,7 +239,11 @@ class UI {
   <button class='save-drink ${this.favouriteClassCheck(
     detailsObject.idDrink,
     "button-saved"
-  )}' name='${detailsObject.idDrink}' >SAVE</button>
+  )}' name='${detailsObject.idDrink}' >${
+      this.favouriteClassCheck(detailsObject.idDrink, "button-saved")
+        ? "REMOVE"
+        : "SAVE"
+    }</button>
   <p class="api-res-info">EXTRA INFORMATION:</p>
   <span class="api-res-extrainfo">${detailsObject.strAlcoholic}</span>
   <span class="api-res-extrainfo">${detailsObject.strCategory}</span>
@@ -256,8 +280,6 @@ class UI {
         const ingredientsArr = [...res.drinks];
         //looping throught the array and get the category
         ingredientsArr.forEach((ingredient, index) => {
-          //console.log(ingredient.strIngredient1);
-
           const element = ingredient.strIngredient1;
           // creating the new elements for the form
           makeOptions(element);
@@ -282,12 +304,10 @@ class UI {
     // loop throught the array
     for (let i in favourites) {
       if (favourites[i].id === toCheck) {
-        console.log("favourite");
         return classToAdd;
       }
     }
-    console.log("not favourite");
-    return "";
+    return false;
   }
 
   //load favourites
@@ -306,7 +326,7 @@ class UI {
       <button class="button-comment" drinkid="${
         drinkObj.id
       }">comment</button> <br/>
-      <textarea class="textarea-comment" rows="1" cols="10">comment:${
+      <textarea class="textarea-comment" rows="1" cols="10">${
         drinkObj.comment
       }</textarea> 
       <p class="api-res-extrainfo">${drinkObj.comment}</p>
