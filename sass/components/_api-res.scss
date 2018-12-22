@@ -13,21 +13,62 @@
       margin-bottom: 3rem;
       transform: translateX(100vw);
       animation: load-drinks 0.3s ease-out forwards;
+      //content positioning
+      display: flex;
     }
     &-content {
       text-align: center;
       color: rgb(102, 102, 102);
       position: relative;
+      //content positioning
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
   &-figure {
     position: relative;
     display: inline-block;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 90%);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 90%);
+    overflow: hidden;
   }
   &-img {
     position: relative;
     width: 100%;
     height: auto;
     display: block;
+  }
+  &-instructions-title {
+  }
+  &-instructions-text {
+    padding: 1rem;
+    font-size: 1.4rem;
+  }
+  &-list-title {
+    padding: 1rem;
+  }
+  &-list-element {
+  }
+  &-wrap {
+    display: flex;
+    justify-content: space-around;
+  }
+  &-extrainfo {
+    color: $white;
+    font-weight: bold;
+    flex: 1;
+    padding: 1rem 0;
+
+    &-left {
+      background: $orange;
+    }
+    &-right {
+      background: $blue;
+    }
+    &-comment {
+      background: $whitesmoke;
+      color: $text-color-dark;
+    }
   }
 }

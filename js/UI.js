@@ -90,9 +90,11 @@ class UI {
       let listHtml = "";
       arr.forEach(iq => {
         listHtml += `
-          <li class="api-res-list-element"><span>${
+          <li class="api-res-list-element"><span class="ingredient">${
             iq.ingredient
-          }</span>-<span>${iq.quantity}</span></li>
+          }</span>&nbsp; - &nbsp;<span class="quantity">${
+          iq.quantity
+        }</span></li>
           `;
       });
 
@@ -117,9 +119,9 @@ class UI {
         alt="${drinkObject.strDrink}"
       />
     </figure>
-    <h4 class="api-res-instructions-title">INSTRUCITONLS</h4>
+    <h4 class="api-res-instructions-title">INSTRUCITONS</h4>
     <p class="api-res-instructions-text">
-      all the instructions: ${drinkObject.strInstructions}
+       ${drinkObject.strInstructions}
     </p>
     <ul class="api-res-list">
       <li class="api-res-list-element api-res-list-title">INGREDIENTS</li>
@@ -135,10 +137,17 @@ class UI {
         ? "REMOVE"
         : "SAVE"
     } <i class='far fa-save btn-icon-save'></i></button>
-    <p class="api-res-info">EXTRA INFORMATION:</p>
-    <span class="api-res-extrainfo">${drinkObject.strAlcoholic}</span>
-    <span class="api-res-extrainfo">${drinkObject.strCategory}</span>
-  </div>
+    
+    <p class="api-res-info"></p>
+    <div class="api-res-wrap">  
+        <span class="api-res-extrainfo api-res-extrainfo-left">${
+          drinkObject.strAlcoholic
+        }</span>
+        <span class="api-res-extrainfo api-res-extrainfo-right">${
+          drinkObject.strCategory
+        }</span>
+      </div>
+    </div>
     `;
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
     // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE // TEMPLATE
@@ -207,7 +216,9 @@ class UI {
         listHtml += `
           <li class="api-res-list-element"><span>${
             iq.ingredient
-          }</span>-<span>${iq.quantity}</span></li>
+          }</span class="ingrdient">&nbsp;  &nbsp; <span class="quantity">${
+          iq.quantity
+        }</span></li>
           `;
       });
 
@@ -229,13 +240,13 @@ class UI {
     />
   </figure>
   <h4 class="api-res-instructions-title">${detailsObject.strGlass}</h4>
-  <h4 class="api-res-instructions-title">INSTRUCITONLS</h4>
+  <h4 class="api-res-instructions-title">INSTRUCITONS</h4>
   <p class="api-res-instructions-text">
-    all the instructions: ${detailsObject.strInstructions}
+    ${detailsObject.strInstructions}
   </p>
   <ul class="api-res-list">
     <li class="api-res-list-element api-res-list-title">INGREDIENTS</li>
-    <li class="api-res-list-element api-res-list-title">
+    <li class="api-res-list-element ">
       ${fillList(detailsObject)}
     </li>
   </ul>
@@ -331,10 +342,10 @@ class UI {
       <button class="button-comment" drinkid="${
         drinkObj.id
       }">comment</button> <br/>
-      <textarea class="textarea-comment" rows="1" cols="10">${
+      <textarea class="textarea-comment" rows="1">${
         drinkObj.comment
       }</textarea> 
-      <p class="api-res-extrainfo">${drinkObj.comment}</p>
+      <p class="api-res-extrainfo-comment">${drinkObj.comment}</p>
     </div>
        `;
     };

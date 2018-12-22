@@ -89,8 +89,16 @@ function getDrinks(e) {
         } else {
           //display ingredients, res.drinks is the object with the array
           console.log(res.drinks);
+          const resultTitle = document.querySelector(".result-container > h2");
+
+          resultTitle.innerHTML = drinkToSearch.split("_").join(" ");
+          resultTitle.classList.add("welcome-result");
           //ui has methods that create and add load the new elements
           ui.respArrayToHtml(res.drinks, requestType);
+
+          setTimeout(() => {
+            resultTitle.classList.remove("welcome-result");
+          }, 1000);
         }
       });
     } else {
@@ -189,21 +197,26 @@ function comment(element) {
   // check inf the textarea is active the button saves the comment
   if (parent.querySelector(".textarea-comment-active")) {
     // take the comment from the commetn html
-    const comment = parent.querySelector(".api-res-extrainfo").innerHTML || "";
+    const comment =
+      parent.querySelector(".api-res-extrainfo-comment").innerHTML || "";
     //set as text of the comment in the paragraph
-    parent.querySelector(".api-res-extrainfo").innerHTML = textarea.value;
+    parent.querySelector(".api-res-extrainfo-comment").innerHTML =
+      textarea.value;
     //get the id
     const id = element.getAttribute("drinkid");
     // save new comment
     drinksDB.comment(id, textarea.value);
     // close the textarea
     textarea.classList.remove("textarea-comment-active");
+    //loose focus
+    textarea.blur();
     //set the html button back
     element.innerHTML = "comment";
   } else {
     // it opens the comment
     textarea.classList.add("textarea-comment-active");
     element.innerHTML = "done!";
+    textarea.focus();
   }
 }
 

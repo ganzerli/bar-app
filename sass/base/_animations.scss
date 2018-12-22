@@ -21,3 +21,14 @@
     transform: rotate(0deg) translateY(-50%);
   }
 }
+
+@keyframes welcome-result {
+  0% {
+    transform: translateY(-5rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

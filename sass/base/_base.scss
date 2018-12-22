@@ -32,6 +32,7 @@ body {
   box-sizing: border-box;
   font-size: 1.7rem;
   font-family: "Carme", "Paytone One", sans-serif;
+  color: $text-color-dark;
   //layout stuff
   min-height: 100vh;
   display: flex;
@@ -54,8 +55,6 @@ button {
   outline: none;
 }
 footer {
-  height: 5rem;
-  background: $blue;
 }
 
 main {

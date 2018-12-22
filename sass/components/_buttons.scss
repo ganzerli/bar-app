@@ -7,3 +7,12 @@
   border: none;
   outline: none;
 }
+.save-drink {
+  padding: 1rem 2rem;
+  background: $yellow;
+  width: 50%;
+  display: inline-block;
+  transform: translateX(50%);
+  margin: 1rem;
+  border-radius: 2rem;
+}

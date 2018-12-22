@@ -2,7 +2,7 @@
   background: $orange;
   flex: 1;
   min-width: 23rem;
-
+  font-weight: bold;
   &-nav {
   }
   &-list {
@@ -38,6 +38,7 @@
       position: absolute;
       right: 0.2rem;
       transform: translateY(-50%);
+      transition: all 0.2s ease-out;
     }
   }
   &-link {
@@ -45,7 +46,12 @@
     z-index: 2;
     position: absolute;
     display: block;
-    width: 80%;
+    width: 100%;
+    padding: 1rem 0;
+    transition: all 0.3s ease-in;
+    &:hover {
+      color: $white;
+    }
   }
 }
 

@@ -1,5 +1,13 @@
 select#drinks-input {
   padding: 1rem;
+  color: transparent;
+  &:focus ~ .form-label-select {
+    transform: translateY(-4rem);
+    color: $blue;
+  }
+  &:focus {
+    color: inherit;
+  }
 }
 .select-box {
   position: relative;
@@ -22,7 +30,7 @@ select#drinks-input {
   }
   &:hover {
     background: rgba(255, 255, 255, 0.5);
-    color: $orange;
+
     &::after {
       background: $blue;
     }

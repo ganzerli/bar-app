@@ -6,6 +6,9 @@
       outline: none;
       padding: 1rem;
       color: green;
+      font-weight: bold;
+      min-height: 4rem;
+      width: 85%;
       &:focus {
       }
       &:hover {
@@ -14,7 +17,7 @@
         color: transparent;
       }
       &:placeholder-shown ~ .form-label-name {
-        color: blue;
+        color: $blue;
         transform: translateY(0);
       }
     }
@@ -52,10 +55,16 @@
       font-size: 1.5rem;
       left: 1rem;
       top: 1rem;
-      transform: translateY(-3rem);
+      transform: translateY(-4rem);
       transition: all 0.2s;
+      pointer-events: none;
     }
     &-select {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      transition: all 0.2s;
+      pointer-events: none;
     }
   }
 }
