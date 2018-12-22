@@ -1,12 +1,26 @@
 .form {
   &-drinks {
+    margin-top: 5rem;
     &-input-text {
       border: rgba(0, 0, 0, 0.1) solid 1px;
       outline: none;
       padding: 1rem;
+      color: green;
       &:focus {
       }
+      &:hover {
+      }
+      &::-webkit-input-placeholder {
+        color: transparent;
+      }
+      &:placeholder-shown ~ .form-label-name {
+        color: blue;
+        transform: translateY(0);
+      }
     }
+  }
+  &-container {
+    min-height: 20rem;
   }
   &-group {
     margin: 2rem 0;
@@ -20,12 +34,33 @@
       height: 4rem;
       width: 3.5rem;
       position: absolute;
-      background: #ffdb5c;
+      background: $blue;
       z-index: 2;
       top: -1px;
       right: 0;
       transform: translateY(1px);
       border-radius: 2px;
+      transition: all 0.2s;
     }
   }
+
+  &-label {
+    &-name {
+      font-weight: bold;
+      color: $blue;
+      position: absolute;
+      font-size: 1.5rem;
+      left: 1rem;
+      top: 1rem;
+      transform: translateY(-3rem);
+      transition: all 0.2s;
+    }
+    &-select {
+    }
+  }
+}
+
+.select-box-icon-selected {
+  text-shadow: 1px 2px 0 rgba($blue, 0.5);
+  color: $red;
 }

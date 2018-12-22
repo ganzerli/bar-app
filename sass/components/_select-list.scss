@@ -3,11 +3,14 @@ select#drinks-input {
 }
 .select-box {
   position: relative;
+  transition: all 0.2s;
+  box-shadow: 0 2px 1rem -2px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   &::after {
     pointer-events: none;
     content: "";
     height: calc(4rem + 1px);
-    width: 3.5rem;
+    width: 3.1rem;
     position: absolute;
     background: #ffdb5c;
     z-index: 2;
@@ -15,25 +18,31 @@ select#drinks-input {
     right: 0;
     transform: translateY(1px);
     border-radius: 2px;
+    transition: all 0.2s;
   }
   &:hover {
-    background: #b9e84b;
+    background: rgba(255, 255, 255, 0.5);
+    color: $orange;
     &::after {
-      background: #b9e84b;
+      background: $blue;
+    }
+    & .select-box-icon {
+      text-shadow: 1px 2px 0 rgba($blue, 0.5);
+      color: $red;
     }
   }
 
   &-icon {
     position: absolute;
     right: 0.1rem;
-    position: absolute;
     z-index: 3;
     top: -2px;
     padding: 2px;
     pointer-events: none;
     color: $blue;
     transform: scale(0.8);
-    text-shadow: 1px 2px 0 rgba($blue, 0.5);
+    text-shadow: 0px 0px 0 rgba($blue, 0.5);
+    transition: all 0.2s;
     &::before {
       font-size: 3rem;
       line-height: 4rem;
@@ -53,13 +62,12 @@ select:focus {
   width: 100%;
   border: none;
   cursor: pointer;
-  box-shadow: 0 2px 1rem -2px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.3);
   -webkit-appearance: button;
   border: none;
   outline: none;
+  background: inherit;
   &:hover {
-    color: $blue;
+    color: currentColor;
   }
 }
 option {

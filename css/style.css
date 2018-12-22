@@ -91,10 +91,22 @@ main {
   100% {
     transform: translateX(0); } }
 
+@keyframes shake {
+  0% {
+    transform: rotate(0) translateY(-50%); }
+  25% {
+    transform: rotate(-6deg) translateY(-50%); }
+  50% {
+    transform: rotate(6deg) translateY(-50%); }
+  75% {
+    transform: rotate(-7deg) translateY(-50%); }
+  100% {
+    transform: rotate(0deg) translateY(-50%); } }
+
 .header {
   min-height: 7rem;
-  background-color: #fa6e59;
-  color: #ffdb5c;
+  background-color: #4897d8;
+  color: #f8a055;
   display: flex;
   justify-content: space-around; }
 
@@ -119,6 +131,9 @@ main {
     .side-cmd-list-item:hover::before {
       transform: scaleY(1);
       width: 100%; }
+    .side-cmd-list-item:hover .side-cmd-list-icon {
+      color: white;
+      animation: shake 0.5s ease-out; }
   .side-cmd-list-icon {
     font-size: 2.5rem;
     line-height: 0.6;
@@ -166,7 +181,7 @@ main {
   flex: 5; }
 
 .button-saved {
-  color: red; }
+  color: #fa6e59; }
 
 #submit-button {
   cursor: pointer;
@@ -207,34 +222,42 @@ select#drinks-input {
   padding: 1rem; }
 
 .select-box {
-  position: relative; }
+  position: relative;
+  transition: all 0.2s;
+  box-shadow: 0 2px 1rem -2px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.3); }
   .select-box::after {
     pointer-events: none;
     content: "";
     height: calc(4rem + 1px);
-    width: 3.5rem;
+    width: 3.1rem;
     position: absolute;
     background: #ffdb5c;
     z-index: 2;
     top: -1px;
     right: 0;
     transform: translateY(1px);
-    border-radius: 2px; }
+    border-radius: 2px;
+    transition: all 0.2s; }
   .select-box:hover {
-    background: #b9e84b; }
+    background: rgba(255, 255, 255, 0.5);
+    color: #f8a055; }
     .select-box:hover::after {
-      background: #b9e84b; }
+      background: #4897d8; }
+    .select-box:hover .select-box-icon {
+      text-shadow: 1px 2px 0 rgba(72, 151, 216, 0.5);
+      color: #fa6e59; }
   .select-box-icon {
     position: absolute;
     right: 0.1rem;
-    position: absolute;
     z-index: 3;
     top: -2px;
     padding: 2px;
     pointer-events: none;
     color: #4897d8;
     transform: scale(0.8);
-    text-shadow: 1px 2px 0 rgba(72, 151, 216, 0.5); }
+    text-shadow: 0px 0px 0 rgba(72, 151, 216, 0.5);
+    transition: all 0.2s; }
     .select-box-icon::before {
       font-size: 3rem;
       line-height: 4rem;
@@ -250,14 +273,13 @@ select:focus {
   width: 100%;
   border: none;
   cursor: pointer;
-  box-shadow: 0 2px 1rem -2px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.3);
   -webkit-appearance: button;
   border: none;
-  outline: none; }
+  outline: none;
+  background: inherit; }
   select:hover,
   select:focus:hover {
-    color: #4897d8; }
+    color: currentColor; }
 
 option {
   font-weight: bold;
@@ -266,10 +288,21 @@ option {
   box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.3); }
 
-.form-drinks-input-text {
-  border: rgba(0, 0, 0, 0.1) solid 1px;
-  outline: none;
-  padding: 1rem; }
+.form-drinks {
+  margin-top: 5rem; }
+  .form-drinks-input-text {
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+    outline: none;
+    padding: 1rem;
+    color: green; }
+    .form-drinks-input-text::-webkit-input-placeholder {
+      color: transparent; }
+    .form-drinks-input-text:placeholder-shown ~ .form-label-name {
+      color: blue;
+      transform: translateY(0); }
+
+.form-container {
+  min-height: 20rem; }
 
 .form-group {
   margin: 2rem 0; }
@@ -282,9 +315,24 @@ option {
     height: 4rem;
     width: 3.5rem;
     position: absolute;
-    background: #ffdb5c;
+    background: #4897d8;
     z-index: 2;
     top: -1px;
     right: 0;
     transform: translateY(1px);
-    border-radius: 2px; }
+    border-radius: 2px;
+    transition: all 0.2s; }
+
+.form-label-name {
+  font-weight: bold;
+  color: #4897d8;
+  position: absolute;
+  font-size: 1.5rem;
+  left: 1rem;
+  top: 1rem;
+  transform: translateY(-3rem);
+  transition: all 0.2s; }
+
+.select-box-icon-selected {
+  text-shadow: 1px 2px 0 rgba(72, 151, 216, 0.5);
+  color: #fa6e59; }
