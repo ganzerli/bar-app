@@ -3,6 +3,29 @@
     &-input-text {
       border: rgba(0, 0, 0, 0.1) solid 1px;
       outline: none;
+      padding: 1rem;
+      &:focus {
+      }
+    }
+  }
+  &-group {
+    margin: 2rem 0;
+  }
+
+  &-box-input {
+    position: relative;
+    &::after {
+      pointer-events: none;
+      content: "";
+      height: 4rem;
+      width: 3.5rem;
+      position: absolute;
+      background: #ffdb5c;
+      z-index: 2;
+      top: -1px;
+      right: 0;
+      transform: translateY(1px);
+      border-radius: 2px;
     }
   }
 }

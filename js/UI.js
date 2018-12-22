@@ -31,30 +31,34 @@ class UI {
     const result = document.querySelector("#result");
     switch (requestType) {
       case "search-by-name":
-        respArray.forEach(drink => {
+        respArray.forEach((drink, index) => {
           //creates a div with the info in the response array from app.js
           const element = this.wrapElementName(drink);
+          element.style.animationDelay = `${index * 70}ms`;
           result.appendChild(element);
         });
         break;
       case "search-by-ingredients":
-        respArray.forEach(drink => {
+        respArray.forEach((drink, index) => {
           //creates a div with the info in the response array from app.js
           const element = this.wrapElementImgTitile(drink);
+          element.style.animationDelay = `${index * 70}ms`;
           result.appendChild(element);
         });
         break;
       case "search-by-alcoholic":
-        respArray.forEach(drink => {
+        respArray.forEach((drink, index) => {
           //creates a div with the info in the response array from app.js
           const element = this.wrapElementImgTitile(drink);
+          element.style.animationDelay = `${index * 70}ms`;
           result.appendChild(element);
         });
         break;
       case "search-by-category":
-        respArray.forEach(drink => {
+        respArray.forEach((drink, index) => {
           //creates a div with the info in the response array from app.js
           const element = this.wrapElementImgTitile(drink);
+          element.style.animationDelay = `${index * 70}ms`;
           result.appendChild(element);
         });
         break;
@@ -130,7 +134,7 @@ class UI {
       this.favouriteClassCheck(drinkObject.idDrink, "button-saved")
         ? "REMOVE"
         : "SAVE"
-    }</button>
+    } <i class='far fa-save btn-icon-save'></i></button>
     <p class="api-res-info">EXTRA INFORMATION:</p>
     <span class="api-res-extrainfo">${drinkObject.strAlcoholic}</span>
     <span class="api-res-extrainfo">${drinkObject.strCategory}</span>
@@ -165,10 +169,9 @@ class UI {
   )}' name='${drinkObject.idDrink}' >${
       this.favouriteClassCheck(drinkObject.idDrink, "button-saved")
         ? "REMOVE"
-        : "SAVE"
-    }</button>
-  <span class="api-res-extrainfo">${drinkObject.strAlcoholic}</span>
-  <span class="api-res-extrainfo">${drinkObject.strCategory}</span>
+        : "SAVE "
+    }<i class='far fa-save btn-icon-save'></i></button>
+ <br/>
 </div>
     `;
     return div;
@@ -243,7 +246,9 @@ class UI {
       this.favouriteClassCheck(detailsObject.idDrink, "button-saved")
         ? "REMOVE"
         : "SAVE"
-    }</button>
+    } 
+
+    <i class="far fa-save btn-icon-save"></i></button>
   <p class="api-res-info">EXTRA INFORMATION:</p>
   <span class="api-res-extrainfo">${detailsObject.strAlcoholic}</span>
   <span class="api-res-extrainfo">${detailsObject.strCategory}</span>
@@ -259,7 +264,7 @@ class UI {
 
   // populate the form
   populateForm() {
-    const name = document.querySelector("#drinks-input").name;
+    const name = document.querySelector("#drinks-input").name || "";
     if (name === "search-by-category") {
       //query the api to give to the form the categories
       drinksApi.getCategoryList().then(res => {

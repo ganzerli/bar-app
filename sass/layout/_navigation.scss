@@ -1,0 +1,56 @@
+.side-cmd {
+  background: $orange;
+  flex: 1;
+  min-width: 23rem;
+
+  &-nav {
+  }
+  &-list {
+    &-item {
+      position: relative;
+      padding: 2rem 2rem;
+      &::before {
+        content: "";
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        background: $blue;
+        left: 0;
+        top: 0;
+        transform: scaleY(0);
+        transition: transform 0.2s ease-in, width 0.3s ease-out 0.25s;
+        z-index: 0;
+      }
+      &:hover {
+        &::before {
+          transform: scaleY(1);
+          width: 100%;
+        }
+      }
+    }
+    &-icon {
+      font-size: 2.5rem;
+      line-height: 0.6;
+      position: absolute;
+      right: 0.2rem;
+      transform: translateY(-50%);
+    }
+  }
+  &-link {
+    transform: translateY(-50%);
+    z-index: 2;
+    position: absolute;
+    display: block;
+    width: 80%;
+  }
+}
+
+/*
+
+ <nav clas="side-cmd-nav">
+            <ul class="side-cmd-list">
+              <li class="side-cmd-list-item">
+                <a href="index.html" class="side-cmd-link"> NAME </a>
+                <i class="fas fa-wine-bottle side-cmd-list-icon"></i>
+
+*/

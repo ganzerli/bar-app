@@ -1,0 +1,71 @@
+select#drinks-input {
+  padding: 1rem;
+}
+.select-box {
+  position: relative;
+  &::after {
+    pointer-events: none;
+    content: "";
+    height: calc(4rem + 1px);
+    width: 3.5rem;
+    position: absolute;
+    background: #ffdb5c;
+    z-index: 2;
+    top: -1px;
+    right: 0;
+    transform: translateY(1px);
+    border-radius: 2px;
+  }
+  &:hover {
+    background: #b9e84b;
+    &::after {
+      background: #b9e84b;
+    }
+  }
+
+  &-icon {
+    position: absolute;
+    right: 0.1rem;
+    position: absolute;
+    z-index: 3;
+    top: -2px;
+    padding: 2px;
+    pointer-events: none;
+    color: $blue;
+    transform: scale(0.8);
+    text-shadow: 1px 2px 0 rgba($blue, 0.5);
+    &::before {
+      font-size: 3rem;
+      line-height: 4rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 50%;
+      box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
+    }
+    &:hover {
+    }
+  }
+}
+select,
+select:focus {
+  font: unset;
+  font-weight: bold;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 1rem -2px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-appearance: button;
+  border: none;
+  outline: none;
+  &:hover {
+    color: $blue;
+  }
+}
+option {
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.3);
+}

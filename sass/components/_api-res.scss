@@ -8,9 +8,11 @@
   &-drink {
     &-element {
       position: relative;
-      width: 20rem;
+      width: $card-width;
       box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
       margin-bottom: 3rem;
+      transform: translateX(100vw);
+      animation: load-drinks 0.3s ease-out forwards;
     }
     &-content {
       text-align: center;

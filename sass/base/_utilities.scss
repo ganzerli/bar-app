@@ -14,3 +14,11 @@
     transform: translateX(-50%);
   }
 }
+.flex {
+  display: flex;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
