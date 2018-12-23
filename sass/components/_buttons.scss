@@ -6,7 +6,49 @@
   background: none;
   border: none;
   outline: none;
+  // view styles
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  width: 15rem;
+  height: 5.5rem;
+  border-radius: 3px;
+  box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.3);
+  color: black;
+  text-align: left;
+  font-weight: bolder;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: all 0.3s ease-in;
+  &:active {
+    color: $blue;
+    box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.5);
+    transform: translateY(4px);
+    & + .submit-icon {
+    }
+  }
+  &:hover {
+    transform: translateX(20%);
+    &::after {
+    }
+    & + .submit-icon {
+      color: $white;
+      transform: scale(1.2) translateX(-1.5rem) rotate(-5deg);
+    }
+  }
+  &::after {
+  }
 }
+.submit-icon {
+  font-size: 2.5rem;
+  margin-left: 1rem;
+  transition: color 0.3s, transform 0.2s ease-out 0.1s;
+  pointer-events: none;
+  backface-visibility: hidden;
+  &.search-animation {
+    animation: search-animation 1.5s;
+  }
+}
+
 .save-drink {
   padding: 1rem 2rem;
   background: $yellow;

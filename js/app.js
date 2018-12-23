@@ -96,9 +96,17 @@ function getDrinks(e) {
           //ui has methods that create and add load the new elements
           ui.respArrayToHtml(res.drinks, requestType);
 
+          //make the icon animation
+          document
+            .querySelector(".submit-icon")
+            .classList.add("search-animation");
+
           setTimeout(() => {
             resultTitle.classList.remove("welcome-result");
-          }, 1000);
+            document
+              .querySelector(".submit-icon")
+              .classList.remove("search-animation");
+          }, 1600);
         }
       });
     } else {

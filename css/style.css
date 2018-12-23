@@ -89,7 +89,8 @@ main {
     background: whitesmoke; }
 
 .flex {
-  display: flex; }
+  display: flex;
+  align-items: center; }
 
 .container {
   display: flex;
@@ -121,6 +122,17 @@ main {
     opacity: 0; }
   100% {
     transform: translateX(0);
+    opacity: 1; } }
+
+@keyframes search-animation {
+  60% {
+    transform: scale(5);
+    opacity: 0; }
+  61% {
+    transform: scale(0) translateX(-1.5rem);
+    opacity: 1; }
+  100% {
+    transform: scale(1.2) translateX(-1.5rem);
     opacity: 1; } }
 
 .header {
@@ -216,7 +228,37 @@ main {
   cursor: pointer;
   background: none;
   border: none;
-  outline: none; }
+  outline: none;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  width: 15rem;
+  height: 5.5rem;
+  border-radius: 3px;
+  box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.3);
+  color: black;
+  text-align: left;
+  font-weight: bolder;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: all 0.3s ease-in; }
+  #submit-button:active {
+    color: #4897d8;
+    box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.5);
+    transform: translateY(4px); }
+  #submit-button:hover {
+    transform: translateX(20%); }
+    #submit-button:hover + .submit-icon {
+      color: #ffffff;
+      transform: scale(1.2) translateX(-1.5rem) rotate(-5deg); }
+
+.submit-icon {
+  font-size: 2.5rem;
+  margin-left: 1rem;
+  transition: color 0.3s, transform 0.2s ease-out 0.1s;
+  pointer-events: none;
+  backface-visibility: hidden; }
+  .submit-icon.search-animation {
+    animation: search-animation 1.5s; }
 
 .save-drink {
   padding: 1rem 2rem;
@@ -382,7 +424,8 @@ option {
   min-height: 20rem; }
 
 .form-group {
-  margin: 2rem 0; }
+  margin: 2rem 0;
+  position: relative; }
 
 .form-box-input {
   position: relative; }
