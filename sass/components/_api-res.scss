@@ -80,4 +80,31 @@
       color: $text-color-dark;
     }
   }
+  &-icon {
+    font-size: 2rem;
+    padding: 0 1rem;
+    pointer-events: none;
+  }
+}
+
+.textarea-comment {
+  display: none;
+  &-active {
+    display: unset;
+    position: absolute;
+    font-family: "Carme", "Paytone One", sans-serif;
+    font-weight: 600;
+    bottom: 0;
+    left: 0;
+    color: $blue;
+    outline: none;
+    border: none;
+    width: 80%;
+    margin-left: 10%;
+    background: $whitesmoke;
+  }
+  &.appear-bounce {
+    animation: appear-bounce linear 0.8s forwards;
+    animation-iteration-count: 1;
+  }
 }

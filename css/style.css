@@ -83,21 +83,13 @@ h2#favourite-link {
   padding: 1rem;
   text-transform: uppercase; }
 
+.form-title {
+  padding: 2rem;
+  text-transform: capitalize;
+  font-family: "Paytone One", "Carme", sans-serif; }
+
 .field-invalid {
   box-shadow: 0 0 3px 1px #fa3333; }
-
-.textarea-comment {
-  display: none; }
-  .textarea-comment-active {
-    display: unset;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    color: #4897d8;
-    outline: none;
-    border: none;
-    width: 100%;
-    background: whitesmoke; }
 
 .flex {
   display: flex;
@@ -144,10 +136,12 @@ h2#favourite-link {
     transform: scale(5) rotate(280deg);
     opacity: 0; }
   61% {
-    transform: scale(0);
+    transform: scale(0) translateX(20rem);
     opacity: 1; }
+  80% {
+    transform: scale(0.6) translateX(-1.5rem);
+    opacity: 0.6; }
   100% {
-    transform: scale(1.2) translateX(-1.5rem);
     opacity: 1; } }
 
 @keyframes fav-slide {
@@ -158,6 +152,54 @@ h2#favourite-link {
     font-weight: 900; }
   100% {
     transform: translateX(0) rotate(360deg); } }
+
+@keyframes appear-bounce {
+  0% {
+    transform: translate(0px, 0px);
+    background: white; }
+  15% {
+    transform: translate(0px, -25px); }
+  30% {
+    transform: translate(0px, 0px); }
+  45% {
+    transform: translate(0px, -15px); }
+  60% {
+    transform: translate(0px, 0px); }
+  75% {
+    transform: translate(0px, -5px); }
+  100% {
+    transform: translate(0px, 0px); } }
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: translate(1500px, 0px); }
+  60% {
+    opacity: 1;
+    transform: translate(-30px, 0px); }
+  80% {
+    transform: translate(10px, 0px); }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px); } }
+
+@keyframes write {
+  0% { }
+  10% {
+    transform: rotate(3deg) translateX(25%); }
+  25% {
+    transform: rotate(-6deg) translateX(50%); }
+  35% {
+    transform: rotate(4deg) translateX(75%); }
+  50% {
+    transform: rotate(-3deg) translateX(100%); }
+  65% {
+    transform: rotate(6deg) translateX(75%); }
+  75% {
+    transform: rotate(-7deg) translateX(45%); }
+  85% {
+    transform: rotate(5deg) translateX(20%); }
+  100% { } }
 
 .header {
   min-height: 7rem;
@@ -204,7 +246,9 @@ h2#favourite-link {
       transform: scaleY(1);
       width: 100%; }
     .side-cmd-list-item:hover .side-cmd-list-icon {
-      color: #ffffff;
+      color: #f8a055;
+      transform: translateY(-50%);
+      text-shadow: 1px 1px 0 #ffffff;
       animation: shake 0.5s ease-out; }
   .side-cmd-list-icon {
     font-size: 2.5rem;
@@ -212,7 +256,8 @@ h2#favourite-link {
     position: absolute;
     right: 0.2rem;
     transform: translateY(-50%);
-    transition: all 0.2s ease-out; }
+    transition: all 0.2s ease-out;
+    text-shadow: 1px 1px 0 #f8a055; }
   .side-cmd-link {
     transform: translateY(-50%);
     z-index: 2;
@@ -243,7 +288,8 @@ h2#favourite-link {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    z-index: 2; }
+    z-index: 2;
+    animation: popup 0.6s linear forwards; }
   .popup-content {
     background-color: rgba(255, 255, 255, 0.95);
     text-align: center;
@@ -262,21 +308,19 @@ h2#favourite-link {
   overflow-x: hidden;
   position: relative; }
 
-.button-saved {
-  color: #fa6e59; }
-
 #submit-button {
   cursor: pointer;
   background: none;
   border: none;
   outline: none;
   text-transform: uppercase;
+  font-family: "Paytone One", "Carme", sans-serif;
+  color: orange;
   padding: 1rem 2rem;
   width: 15rem;
   height: 5.5rem;
   border-radius: 3px;
   box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.3);
-  color: inherit;
   text-align: left;
   font-weight: bolder;
   background-color: rgba(255, 255, 255, 0.1);
@@ -289,8 +333,8 @@ h2#favourite-link {
     transform: translateX(23%); }
     #submit-button:hover + .submit-icon {
       transform: scale(1.2) translateX(-1.5rem) rotate(-5deg);
-      color: #4897d8;
-      text-shadow: 1px 1px 0 #ffffff; }
+      color: #fa6e59;
+      text-shadow: 1px 1px 0 #4897d8; }
 
 .submit-icon {
   font-size: 2.5rem;
@@ -298,26 +342,54 @@ h2#favourite-link {
   transition: color 0.3s, transform 0.2s ease-out 0.1s;
   pointer-events: none;
   backface-visibility: hidden;
-  color: white;
-  text-shadow: 1px 1px 0 #4897d8; }
+  color: #4897d8;
+  text-shadow: 1px 1px 0 #fa6e59; }
   .submit-icon.search-animation {
     animation: search-animation 1.5s; }
 
 .open-modal {
-  padding: 1rem 2rem;
   background: #4897d8;
-  width: 50%;
+  color: #ffffff;
   display: inline-block;
   margin: 1rem auto;
-  border-radius: 2rem; }
+  border-radius: 2rem;
+  font-weight: bold;
+  font-family: inherit;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  min-width: 50%;
+  transition: all 0.2s ease-out; }
+  .open-modal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.3); }
+  .open-modal:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.3); }
 
 .save-drink {
-  padding: 1rem 2rem;
   background: #ffdb5c;
-  width: 50%;
+  color: #0ca60c;
   display: inline-block;
   margin: 1rem auto;
-  border-radius: 2rem; }
+  border-radius: 2rem;
+  font-weight: bold;
+  font-family: inherit;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  min-width: 50%;
+  transition: all 0.2s ease-out; }
+  .save-drink:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.3); }
+  .save-drink:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.3); }
+
+.button-comment:hover .api-res-icon-comment {
+  animation: write 0.8s ease-out; }
+
+.button-saved {
+  color: #fa6e59 !important; }
 
 .api-res-wrapper {
   display: flex;
@@ -387,6 +459,30 @@ h2#favourite-link {
   .api-res-extrainfo-comment {
     background: whitesmoke;
     color: #505050; }
+
+.api-res-icon {
+  font-size: 2rem;
+  padding: 0 1rem;
+  pointer-events: none; }
+
+.textarea-comment {
+  display: none; }
+  .textarea-comment-active {
+    display: unset;
+    position: absolute;
+    font-family: "Carme", "Paytone One", sans-serif;
+    font-weight: 600;
+    bottom: 0;
+    left: 0;
+    color: #4897d8;
+    outline: none;
+    border: none;
+    width: 80%;
+    margin-left: 10%;
+    background: whitesmoke; }
+  .textarea-comment.appear-bounce {
+    animation: appear-bounce linear 0.8s forwards;
+    animation-iteration-count: 1; }
 
 select#drinks-input {
   padding: 1rem;

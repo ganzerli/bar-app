@@ -91,19 +91,22 @@ function getDrinks(e) {
           //display ingredients, res.drinks is the object with the array
           console.log(res.drinks);
           const resultTitle = document.querySelector(".result-container > h2");
-
-          resultTitle.innerHTML = drinkToSearch.split("_").join(" ");
-          resultTitle.classList.add("welcome-result");
+          if (resultTitle) {
+            // in Alcoholic there is not result title
+            resultTitle.innerHTML = drinkToSearch.split("_").join(" ");
+            resultTitle.classList.add("welcome-result");
+          }
           //ui has methods that create and add load the new elements
           ui.respArrayToHtml(res.drinks, requestType);
-
           //make the icon animation
           document
             .querySelector(".submit-icon")
             .classList.add("search-animation");
 
           setTimeout(() => {
-            resultTitle.classList.remove("welcome-result");
+            resultTitle
+              ? resultTitle.classList.remove("welcome-result")
+              : false;
             document
               .querySelector(".submit-icon")
               .classList.remove("search-animation");
@@ -227,12 +230,16 @@ function comment(element) {
     //loose focus
     textarea.blur();
     //set the html button back
-    element.innerHTML = "comment";
+    element.innerHTML =
+      "Comment <i class='fas fa-pencil-alt api-res-icon api-res-icon-comment'></i>";
   } else {
     // it opens the comment
     textarea.classList.add("textarea-comment-active");
-    element.innerHTML = "done!";
+    textarea.classList.add("appear-bounce");
     textarea.focus();
+
+    element.innerHTML =
+      "Done! <i class='fas fa-check api-res-icon api-res-icon-done'></i>";
   }
 }
 

@@ -27,7 +27,9 @@
           width: 100%;
         }
         & .side-cmd-list-icon {
-          color: $white;
+          color: $orange;
+          transform: translateY(-50%);
+          text-shadow: 1px 1px 0 $white;
           animation: shake 0.5s ease-out;
         }
       }
@@ -39,6 +41,7 @@
       right: 0.2rem;
       transform: translateY(-50%);
       transition: all 0.2s ease-out;
+      text-shadow: 1px 1px 0 $orange;
     }
   }
   &-link {

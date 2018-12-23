@@ -110,6 +110,7 @@ class UI {
     <div class="api-res-drink-content"   name="${
       drinkObject.strDrink
     }" image="${drinkObject.strDrinkThumb}"  >
+    <div>
     <h3 class="api-res-name">${drinkObject.strDrink}</h3>
     <figure class="api-res-figure">
       <img
@@ -118,6 +119,7 @@ class UI {
         alt="${drinkObject.strDrink}"
       />
     </figure>
+    </div>
     <h4 class="api-res-instructions-title">INSTRUCITONS</h4>
     <p class="api-res-instructions-text">
        ${drinkObject.strInstructions}
@@ -350,8 +352,8 @@ class UI {
       }">Details <i class="fas fa-mortar-pestle api-res-icon api-res-icon-details"></i></button>
       <button class="button-comment" drinkid="${
         drinkObj.id
-      }">Comment <i class="fas fa-pencil-alt "></i></button> <br/>
-      <textarea class="textarea-comment api-res-icon api-res-icon-comment" rows="1">${
+      }">Comment <i class='fas fa-pencil-alt api-res-icon api-res-icon-comment'></i></button> <br/>
+      <textarea class="textarea-comment" rows="1">${
         drinkObj.comment
       }</textarea> 
       <p class="api-res-extrainfo-comment">${drinkObj.comment}</p>

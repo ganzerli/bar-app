@@ -29,3 +29,23 @@
     }
   }
 }
+
+@mixin card-btn() {
+  display: inline-block;
+  margin: 1rem auto;
+  border-radius: 2rem;
+  font-weight: bold;
+  font-family: inherit;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  min-width: 50%;
+  transition: all 0.2s ease-out;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.3);
+  }
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.3);
+  }
+}
