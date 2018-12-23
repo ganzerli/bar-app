@@ -21,11 +21,18 @@
       text-align: center;
       color: rgb(102, 102, 102);
       position: relative;
+      border-radius: 3px;
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
       //content positioning
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
+  }
+  &-name {
+    font-family: "Paytone One", "Carme", sans-serif;
+    color: $orange;
+    padding: 1rem;
   }
   &-figure {
     position: relative;
@@ -43,7 +50,7 @@
   &-instructions-title {
   }
   &-instructions-text {
-    padding: 1rem;
+    padding: 1rem 4rem;
     font-size: 1.4rem;
   }
   &-list-title {
@@ -57,6 +64,7 @@
   }
   &-extrainfo {
     color: $white;
+    display: inline-block;
     font-weight: bold;
     flex: 1;
     padding: 1rem 0;

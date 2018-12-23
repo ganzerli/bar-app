@@ -6,6 +6,24 @@
   justify-content: space-between;
   &-description {
     font-weight: bold;
-    padding: 1rem 4rem;
+    padding: 1rem;
+  }
+  &-fav-wrap {
+    position: relative;
+    &:hover {
+      & .header-fav-icon {
+        color: $orange;
+        animation: fav-slide 1s ease;
+      }
+    }
+  }
+  //is activated when hover on the favourites link
+  &-fav-icon {
+    position: absolute;
+    z-index: 0;
+    color: transparent;
+    transition: color 0.4s;
+    left: -2rem;
+    top: calc(50% - 0.5rem);
   }
 }

@@ -128,14 +128,15 @@ class UI {
         drinkObject
       )}</li>
     </ul>
+ 
     <button class='save-drink ${this.favouriteClassCheck(
       drinkObject.idDrink,
       "button-saved"
     )}' name='${drinkObject.idDrink}' >${
       this.favouriteClassCheck(drinkObject.idDrink, "button-saved")
-        ? "REMOVE"
-        : "SAVE"
-    } <i class='far fa-save btn-icon-save'></i></button>
+        ? "REMOVE <i class='fas fa-eraser api-res-icon api-res-icon-delete'></i>"
+        : "SAVE <i class='far fa-save api-res-icon api-res-icon api-res-icon-save'></i>"
+    }</button>
     
     <p class="api-res-info"></p>
     <div class="api-res-wrap">  
@@ -172,15 +173,15 @@ class UI {
   <h3 class="api-res-name">${drinkObject.strDrink}</h3>
   <button class='open-modal' id='${
     drinkObject.idDrink
-  }' >Open details<i class="fas fa-mortar-pestle api-res-details-icon"></i></button>
+  }' >Details <i class="fas fa-mortar-pestle api-res-icon api-res-icon-details"></i></button>
   <button class='save-drink ${this.favouriteClassCheck(
     drinkObject.idDrink,
     "button-saved"
   )}' name='${drinkObject.idDrink}' >${
       this.favouriteClassCheck(drinkObject.idDrink, "button-saved")
-        ? "REMOVE"
-        : "SAVE "
-    }<i class='far fa-save btn-icon-save'></i></button>
+        ? "REMOVE <i class='fas fa-eraser api-res-iconEapi-res-icon-delete'></i>"
+        : "SAVE <i class='far fa-save api-res-icon api-res-icon api-res-icon-save'></i>"
+    }</button>
  <br/>
 </div>
     `;
@@ -256,14 +257,19 @@ class UI {
     "button-saved"
   )}' name='${detailsObject.idDrink}' >${
       this.favouriteClassCheck(detailsObject.idDrink, "button-saved")
-        ? "REMOVE"
-        : "SAVE"
-    } 
-    <i class="far fa-save api-res-icon-save"></i> 
-    </button>
-    <p class="api-res-extrainfo-title">EXTRA INFORMATION:</p>
-  <span class="api-res-extrainfo">${detailsObject.strAlcoholic}</span>
-  <span class="api-res-extrainfo">${detailsObject.strCategory}</span>
+        ? "REMOVE <i class='fas fa-eraser api-res-icon api-res-icon-delete'></i>"
+        : "SAVE <i class='far fa-save api-res-icon api-res-icon api-res-icon-save'></i>"
+    }</button>
+
+    <p class="api-res-info"></p>
+    <div class="api-res-wrap">  
+        <span class="api-res-extrainfo api-res-extrainfo-left">${
+          detailsObject.strAlcoholic
+        }</span>
+        <span class="api-res-extrainfo api-res-extrainfo-right">${
+          detailsObject.strCategory
+        }</span>
+      </div>
 </div>
     
     
@@ -341,11 +347,11 @@ class UI {
       <h3 class="api-res-name">${drinkObj.name}</h3>
       <button class="open-modal" id="${
         drinkObj.id
-      }">Open details<i class="fas fa-mortar-pestle api-res-icon-details"></i></button>
+      }">Details <i class="fas fa-mortar-pestle api-res-icon api-res-icon-details"></i></button>
       <button class="button-comment" drinkid="${
         drinkObj.id
-      }">comment</button> <br/>
-      <textarea class="textarea-comment" rows="1">${
+      }">Comment <i class="fas fa-pencil-alt "></i></button> <br/>
+      <textarea class="textarea-comment api-res-icon api-res-icon-comment" rows="1">${
         drinkObj.comment
       }</textarea> 
       <p class="api-res-extrainfo-comment">${drinkObj.comment}</p>

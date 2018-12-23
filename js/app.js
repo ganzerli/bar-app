@@ -164,7 +164,8 @@ function popupListener(e) {
       //in favourites there are not other html elements to bind.. so nopopupMemory
       if (popupMemory) {
         // console.log(popupMemory);
-        popupMemory.innerHTML = "SAVE";
+        popupMemory.innerHTML =
+          "SAVE <i class='far fa-save api-res-icon api-res-icon api-res-icon-save'></i>";
         popupMemory.classList.remove("button-saved");
       }
     } else {
@@ -172,7 +173,8 @@ function popupListener(e) {
       btnSave(e.target);
       if (popupMemory) {
         //console.log(popupMemory);
-        popupMemory.innerHTML = "REMOVE";
+        popupMemory.innerHTML =
+          "REMOVE <i class='fas fa-eraser api-res-icon api-res-icon-delete'></i>";
         popupMemory.classList.add("button-saved");
       }
     }
@@ -236,7 +238,8 @@ function comment(element) {
 
 function btnSave(target) {
   target.classList.add("button-saved");
-  target.innerHTML = "REMOVE";
+  target.innerHTML =
+    "REMOVE <i class='fas fa-eraser api-res-icon api-res-icon-delete'></i>";
   //get info from html element
   const parentElement = target.parentElement;
   //get attributes of element , prepare the name as the api works
@@ -256,7 +259,8 @@ function btnSave(target) {
   drinksDB.saveInDb(drinkInfo);
 }
 function btnRemove(target) {
-  target.innerHTML = "SAVE";
+  target.innerHTML =
+    "SAVE <i class='far fa-save api-res-icon api-res-icon api-res-icon-save'></i>";
   //remove the class
   target.classList.remove("button-saved");
   //and remove from favourites

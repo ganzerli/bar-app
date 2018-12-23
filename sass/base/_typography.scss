@@ -3,7 +3,7 @@ h1#app-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 4rem;
+  padding-left: 4rem;
   font-size: 4rem;
 }
 h2#favourite-link {
@@ -11,10 +11,13 @@ h2#favourite-link {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 6rem;
-
+  padding: 2rem 6rem 2rem 0;
   cursor: pointer;
-  :hover {
+  text-shadow: 1px 1px 0 $orange;
+  transition: color 0.2s ease-out, text-shadow 0.2s 0.1s ease-in;
+  &:hover {
+    text-shadow: 2px 2px 0 $blue;
+    color: $red;
   }
 }
 
