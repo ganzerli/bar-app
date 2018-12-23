@@ -7,14 +7,13 @@ class UI {
       document.getElementById("drinks-input").classList.add(cl);
     }
     div.innerHTML = `
-      <div class="alert">
-        <button type="button" class="close-alert" data-dismiss="alert">close</button>
+      <div class="form-invalid">
         <p>${message}</p>
       </div>
       `;
 
     // insert before , reference and
-    const reference = document.querySelector("#submit-button");
+    const reference = document.querySelector(".form-group");
     const parentNode = reference.parentElement;
     parentNode.insertBefore(div, reference);
 
@@ -171,7 +170,9 @@ class UI {
     />
   </figure>
   <h3 class="api-res-name">${drinkObject.strDrink}</h3>
-  <button class='open-modal' id='${drinkObject.idDrink}' >Open details</button>
+  <button class='open-modal' id='${
+    drinkObject.idDrink
+  }' >Open details<i class="fas fa-mortar-pestle api-res-details-icon"></i></button>
   <button class='save-drink ${this.favouriteClassCheck(
     drinkObject.idDrink,
     "button-saved"
@@ -258,9 +259,9 @@ class UI {
         ? "REMOVE"
         : "SAVE"
     } 
-
-    <i class="far fa-save btn-icon-save"></i></button>
-  <p class="api-res-info">EXTRA INFORMATION:</p>
+    <i class="far fa-save api-res-icon-save"></i> 
+    </button>
+    <p class="api-res-extrainfo-title">EXTRA INFORMATION:</p>
   <span class="api-res-extrainfo">${detailsObject.strAlcoholic}</span>
   <span class="api-res-extrainfo">${detailsObject.strCategory}</span>
 </div>
@@ -338,7 +339,9 @@ class UI {
       }"/>
       </figure>
       <h3 class="api-res-name">${drinkObj.name}</h3>
-      <button class="open-modal" id="${drinkObj.id}">Open details</button>
+      <button class="open-modal" id="${
+        drinkObj.id
+      }">Open details<i class="fas fa-mortar-pestle api-res-icon-details"></i></button>
       <button class="button-comment" drinkid="${
         drinkObj.id
       }">comment</button> <br/>

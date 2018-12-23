@@ -2,10 +2,7 @@
 .field-invalid {
   box-shadow: 0 0 3px 1px rgb(250, 51, 51);
 }
-.alert {
-  background-color: rgb(255, 205, 182);
-  border: 1px solid rgb(255, 157, 76);
-}
+
 .textarea-comment {
   display: none;
   &-active {
@@ -32,4 +29,9 @@
 
 .welcome-result {
   animation: welcome-result 0.6s ease-in;
+}
+
+.form-invalid {
+  background-color: rgb(255, 205, 182);
+  border: 1px solid rgb(255, 157, 76);
 }

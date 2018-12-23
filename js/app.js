@@ -2,7 +2,8 @@
 const ui = new UI(); /*it creates elements for the ui*/
 const drinksApi = new DrinksApi();
 const drinksDB = new DrinksDB();
-let popupMemory;
+let popupMemory; //popupMemory takes as record the button-saved of the card, so if in the popup the btn changes s also in the result container.
+
 // Event listeness
 function eventListeners() {
   //document ready
@@ -160,15 +161,20 @@ function popupListener(e) {
     if (e.target.classList.contains("button-saved")) {
       btnRemove(e.target);
       // add class also at other button
-      console.log(popupMemory);
-      popupMemory.innerHTML = "SAVE";
-      popupMemory.classList.remove("button-saved");
+      //in favourites there are not other html elements to bind.. so nopopupMemory
+      if (popupMemory) {
+        // console.log(popupMemory);
+        popupMemory.innerHTML = "SAVE";
+        popupMemory.classList.remove("button-saved");
+      }
     } else {
       // add class also at other button
       btnSave(e.target);
-      console.log(popupMemory);
-      popupMemory.innerHTML = "REMOVE";
-      popupMemory.classList.add("button-saved");
+      if (popupMemory) {
+        //console.log(popupMemory);
+        popupMemory.innerHTML = "REMOVE";
+        popupMemory.classList.add("button-saved");
+      }
     }
   } else {
     //refresh the result

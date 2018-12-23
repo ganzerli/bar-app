@@ -50,17 +50,21 @@ main {
   flex-direction: column;
   flex: 1; }
 
-#app-title {
+h1#app-title {
   font-family: "Paytone One", "Carme", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center; }
+  justify-content: center;
+  padding: 2rem 4rem;
+  font-size: 4rem; }
 
-#favourite-link {
+h2#favourite-link {
   font-family: "Paytone One", "Carme", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center; }
+  justify-content: center;
+  padding: 2rem 6rem;
+  cursor: pointer; }
 
 .ingredient {
   font-weight: bold; }
@@ -68,12 +72,14 @@ main {
 .quantity {
   color: #0ca60c; }
 
+.result-container h2 {
+  color: #fa6e59;
+  text-align: center;
+  padding: 1rem;
+  text-transform: uppercase; }
+
 .field-invalid {
   box-shadow: 0 0 3px 1px #fa3333; }
-
-.alert {
-  background-color: #ffcdb6;
-  border: 1px solid #ff9d4c; }
 
 .textarea-comment {
   display: none; }
@@ -99,6 +105,10 @@ main {
 
 .welcome-result {
   animation: welcome-result 0.6s ease-in; }
+
+.form-invalid {
+  background-color: #ffcdb6;
+  border: 1px solid #ff9d4c; }
 
 @keyframes load-drinks {
   100% {
@@ -126,24 +136,27 @@ main {
 
 @keyframes search-animation {
   60% {
-    transform: scale(5);
+    transform: scale(5) rotate(280deg);
     opacity: 0; }
   61% {
-    transform: scale(0) translateX(-1.5rem);
+    transform: scale(0);
     opacity: 1; }
   100% {
-    transform: scale(1.2) translateX(-1.5rem);
+    transform: scale(1.2);
     opacity: 1; } }
 
 .header {
   min-height: 7rem;
-  background-color: #f8a055;
+  background-color: whitesmoke;
   color: #4897d8;
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-between; }
+  .header-description {
+    font-weight: bold;
+    padding: 1rem 4rem; }
 
 .side-cmd {
-  background: #f8a055;
+  background: whitesmoke;
   flex: 1;
   min-width: 23rem;
   font-weight: bold; }
@@ -165,7 +178,7 @@ main {
       transform: scaleY(1);
       width: 100%; }
     .side-cmd-list-item:hover .side-cmd-list-icon {
-      color: white;
+      color: #ffffff;
       animation: shake 0.5s ease-out; }
   .side-cmd-list-icon {
     font-size: 2.5rem;
@@ -235,28 +248,30 @@ main {
   height: 5.5rem;
   border-radius: 3px;
   box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.3);
-  color: black;
+  color: inherit;
   text-align: left;
   font-weight: bolder;
   background-color: rgba(255, 255, 255, 0.1);
   position: relative;
   transition: all 0.3s ease-in; }
   #submit-button:active {
-    color: #4897d8;
     box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.5);
     transform: translateY(4px); }
   #submit-button:hover {
-    transform: translateX(20%); }
+    transform: translateX(23%); }
     #submit-button:hover + .submit-icon {
-      color: #ffffff;
-      transform: scale(1.2) translateX(-1.5rem) rotate(-5deg); }
+      transform: scale(1.2) translateX(-1.5rem) rotate(-5deg);
+      color: #4897d8;
+      text-shadow: 1px 1px 0 #ffffff; }
 
 .submit-icon {
   font-size: 2.5rem;
   margin-left: 1rem;
   transition: color 0.3s, transform 0.2s ease-out 0.1s;
   pointer-events: none;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  color: white;
+  text-shadow: 1px 1px 0 #4897d8; }
   .submit-icon.search-animation {
     animation: search-animation 1.5s; }
 
@@ -265,8 +280,7 @@ main {
   background: #ffdb5c;
   width: 50%;
   display: inline-block;
-  transform: translateX(50%);
-  margin: 1rem;
+  margin: 1rem auto;
   border-radius: 2rem; }
 
 .api-res-wrapper {
@@ -281,6 +295,7 @@ main {
   box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
   margin-bottom: 3rem;
   transform: translateX(100vw);
+  background: whitesmoke;
   animation: load-drinks 0.3s ease-out forwards;
   display: flex; }
 

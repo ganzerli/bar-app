@@ -12,6 +12,7 @@
       box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
       margin-bottom: 3rem;
       transform: translateX(100vw);
+      background: $whitesmoke;
       animation: load-drinks 0.3s ease-out forwards;
       //content positioning
       display: flex;

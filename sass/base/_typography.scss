@@ -1,18 +1,33 @@
-#app-title {
+h1#app-title {
   font-family: "Paytone One", "Carme", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 2rem 4rem;
+  font-size: 4rem;
 }
-#favourite-link {
+h2#favourite-link {
   font-family: "Paytone One", "Carme", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 2rem 6rem;
+
+  cursor: pointer;
+  :hover {
+  }
 }
+
 .ingredient {
   font-weight: bold;
 }
 .quantity {
   color: $green;
+}
+
+.result-container h2 {
+  color: $red;
+  text-align: center;
+  padding: 1rem;
+  text-transform: uppercase;
 }

@@ -1,5 +1,5 @@
 .side-cmd {
-  background: $orange;
+  background: $whitesmoke;
   flex: 1;
   min-width: 23rem;
   font-weight: bold;
@@ -27,7 +27,7 @@
           width: 100%;
         }
         & .side-cmd-list-icon {
-          color: white;
+          color: $white;
           animation: shake 0.5s ease-out;
         }
       }
