@@ -4,7 +4,17 @@
   min-width: 23rem;
   font-weight: bold;
   &-nav {
+    background: inherit;
+    transition: all 0.2s ease-in;
+    @include responsive(tab-portrait) {
+      height: 0;
+      overflow: hidden;
+      &-active {
+        height: 17rem !important;
+      }
+    }
   }
+
   &-list {
     &-item {
       position: relative;
@@ -55,6 +65,10 @@
     &:hover {
       color: $white;
     }
+  }
+  @include responsive(tab-portrait) {
+    // height: 19rem;
+    display: inline-table;
   }
 }
 

@@ -57,6 +57,9 @@
   }
   &-container {
     min-height: 30rem;
+    @include responsive(tab-portrait) {
+      min-height: 0;
+    }
   }
   &-group {
     margin: 2rem 0;

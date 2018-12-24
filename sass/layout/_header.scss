@@ -7,6 +7,9 @@
   &-description {
     font-weight: bold;
     padding: 1rem;
+    @include responsive(tab-portrait) {
+      display: none;
+    }
   }
   &-fav-wrap {
     position: relative;

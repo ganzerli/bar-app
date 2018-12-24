@@ -31,6 +31,10 @@ function eventListeners() {
   if (clear) {
     clear.addEventListener("click", clearFavourites);
   }
+  const menu = document.querySelector(".resp-menu-wrap");
+  if (menu) {
+    menu.addEventListener("click", toggleMenu, event);
+  }
 }
 /*
  * THE ANIMATION DELAY IS IN UI , WHEN THE ELEMNT GET CREATED  AND ADDING EACH TO THE RESUL
@@ -268,6 +272,7 @@ function btnSave(target) {
   console.log("saving" + drinkInfo);
   drinksDB.saveInDb(drinkInfo);
 }
+
 function btnRemove(target) {
   target.innerHTML =
     "SAVE <i class='far fa-save api-res-icon api-res-icon api-res-icon-save'></i>";
@@ -276,4 +281,11 @@ function btnRemove(target) {
   //and remove from favourites
   drinksDB.remonveFromDb(target.name);
   console.log("REMOVE" + target.name);
+}
+
+function toggleMenu(evennt) {
+  const menu = document.querySelector(".side-cmd-nav");
+  const menuIcon = document.querySelector(".resp-menu");
+  menu.classList.toggle("side-cmd-nav-active");
+  menuIcon.classList.toggle("resp-menu-active");
 }

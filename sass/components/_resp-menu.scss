@@ -1,0 +1,30 @@
+.resp-menu {
+  position: absolute;
+  right: 0;
+  top: -6rem;
+  &-wrap {
+    position: relative;
+    &-active + .side-cmd-nav {
+      height: unset;
+    }
+  }
+  &-stick {
+    width: 4rem;
+    height: 4px;
+    margin: 0.5rem 1rem;
+    background: blue;
+  }
+  &-active {
+    & > .resp-menu-stick {
+      background: $yellow;
+
+      &:nth-child(1) {
+        background: $blue;
+      }
+      &:nth-child(2) {
+      }
+      &:nth-child(3) {
+      }
+    }
+  }
+}

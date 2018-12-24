@@ -10,21 +10,21 @@ html {
   // IN THE MIXIN IS DEFINED WHICH MEDIA QUERY TO LOOK TO APPLY THIS CONTENT
   scroll-behavior: smooth;
   /*
-  @include responsiveFor(phone) {
+  @include responsive(phone) {
     font-size: 50%;
   }
   */ // if same as other values is not needed, tab portrait is declared alredy as less then 900px, then is also for less then 400;
 
-  @include responsiveFor(tab-landscape) {
+  @include responsive(tab-landscape) {
     //width < 900?
     font-size: 56.25%; // to have 1 ream as 9px 9/16px = 56.25%
   }
   // the order in the code for media query matters to choose which style to overwrite
-  @include responsiveFor(tab-portrait) {
+  @include responsive(tab-portrait) {
     //width < 600?
     font-size: 50%; //to have 1 rem as 8px , 8/16 = 50%;
   }
-  @include responsiveFor(big-desktop) {
+  @include responsive(big-desktop) {
     font-size: 75%;
   }
 }
