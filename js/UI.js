@@ -192,7 +192,6 @@ class UI {
   }
 
   showDetails(detailsObject) {
-    console.log(detailsObject);
     //clear popup
     const popup = document.querySelector("#popup-details");
     popup.innerHTML = "";
@@ -362,16 +361,16 @@ class UI {
     };
     ////////////////////////////////////////////////////////////
     const drinks = drinksDB.getFromDB();
-    console.log(drinks);
     //watch which object has the id same, record the object or index, and remove
 
-    // loop throught the array
+    // loop throught the array and create an element for each object with the template
     for (let i in drinks) {
-      //if the id of the nth object math
+      //if the id of the nth object match
       const child = document.createElement("div");
       child.classList.add("api-res-drink-element");
       child.innerHTML = favTemplate(drinks[i]);
-      console.log(drinks[i]);
+      // adding the animation delay for the elements
+      child.style.animationDelay = `${i * 70}ms`;
       document.querySelector("#result").appendChild(child);
     }
   }

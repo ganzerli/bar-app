@@ -67,8 +67,6 @@ class DrinksDB {
   }
 
   clearDB() {
-    if (confirm("are you shure to clear all your favourites?")) {
-      localStorage.clear("drinks");
-    }
+    localStorage.clear("drinks");
   }
 }

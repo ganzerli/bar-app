@@ -1,29 +1,62 @@
 .form {
   &-drinks {
-    margin-top: 5rem;
-    &-input-text {
-      border: rgba(0, 0, 0, 0.1) solid 1px;
-      outline: none;
-      padding: 1rem;
-      color: green;
-      font-weight: bold;
-      min-height: 4rem;
-      width: 85%;
-      &:focus {
+    //  margin-top: 5rem;
+    &-input {
+      &-check {
+        width: 10rem;
+        height: 4rem;
+        position: absolute;
+        left: 50%;
+        opacity: 0;
+        transform: translateX(-50%);
+        &:checked {
+          & + .form-custom-checkbox {
+            &::before {
+              //off
+              color: $text-color-dark;
+              text-shadow: 1px 1px 0 $orange;
+            }
+            &::after {
+              //on
+              color: $red;
+              text-shadow: 1px 2px 0 $blue;
+            }
+          }
+          & ~ .form-label > .form-check-title {
+            color: transparent;
+          }
+        }
       }
-      &:hover {
-      }
-      &::-webkit-input-placeholder {
-        color: transparent;
-      }
-      &:placeholder-shown ~ .form-label-name {
-        color: $blue;
-        transform: translateY(0);
+      &-text {
+        border: rgba(0, 0, 0, 0.1) solid 1px;
+        outline: none;
+        padding: 1rem;
+        color: green;
+        font-weight: bold;
+        min-height: 4rem;
+        width: 85%;
+        &:focus {
+        }
+        &:hover {
+        }
+        &::-webkit-input-placeholder {
+          color: transparent;
+        }
+        &:placeholder-shown ~ .form-label-name {
+          color: $blue;
+          transform: translateY(0);
+        }
       }
     }
   }
+  &-label {
+    margin-left: 14%;
+  }
+  &-check-title {
+    color: currentColor;
+  }
   &-container {
-    min-height: 20rem;
+    min-height: 30rem;
   }
   &-group {
     margin: 2rem 0;
@@ -36,7 +69,7 @@
       pointer-events: none;
       content: "";
       height: 4rem;
-      width: 3.5rem;
+      width: 3rem;
       position: absolute;
       background: $blue;
       z-index: 2;
@@ -66,6 +99,35 @@
       left: 1rem;
       transition: all 0.2s;
       pointer-events: none;
+    }
+  }
+  &-custom-checkbox {
+    position: relative;
+    height: 4rem;
+    width: 2rem;
+    font-family: "Font Awesome 5 Free";
+    left: 4rem;
+    pointer-events: none;
+    top: 1rem;
+    &::before {
+      content: "\f0f4";
+      font-size: 3rem;
+      left: 0;
+      padding: 1rem 2rem;
+      transition: all 0.2s;
+      //on
+      color: $red;
+      text-shadow: 1px 2px 0 $blue;
+    }
+    &::after {
+      content: "\f7a0";
+      font-size: 3rem;
+      right: 0;
+      padding: 1rem 2rem;
+      transition: all 0.2s;
+      //off
+      color: $text-color-dark;
+      text-shadow: 1px 1px 0 $orange;
     }
   }
 }

@@ -32,6 +32,9 @@ function eventListeners() {
     clear.addEventListener("click", clearFavourites);
   }
 }
+/*
+ * THE ANIMATION DELAY IS IN UI , WHEN THE ELEMNT GET CREATED  AND ADDING EACH TO THE RESUL
+ */
 
 eventListeners();
 
@@ -89,7 +92,6 @@ function getDrinks(e) {
           ui.printMessage(`no matches for: ${drinkToSearch}`);
         } else {
           //display ingredients, res.drinks is the object with the array
-          console.log(res.drinks);
           const resultTitle = document.querySelector(".result-container > h2");
           if (resultTitle) {
             // in Alcoholic there is not result title
@@ -130,7 +132,6 @@ function delegationForButtons(e) {
   if (e.target.classList.contains("open-modal")) {
     getIdDrinkDetails(e.target.id);
     popupMemory = e.target.parentElement.querySelector(".save-drink");
-    console.log(popupMemory);
   } else if (e.target.classList.contains("save-drink")) {
     // clicking the button the object get saved
     if (e.target.classList.contains("button-saved")) {
@@ -205,8 +206,10 @@ function DOMReady() {
 }
 
 function clearFavourites() {
-  drinksDB.clearDB();
-  document.querySelector("#result").innerHTML = "";
+  if (confirm("are you shure to clear all your favourites?")) {
+    drinksDB.clearDB();
+    document.querySelector("#result").innerHTML = "";
+  }
 }
 
 function comment(element) {

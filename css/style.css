@@ -58,16 +58,19 @@ h1#app-title {
   padding-left: 4rem;
   font-size: 4rem; }
 
-h2#favourite-link {
+h2#favourite-link,
+.favourite-link {
   font-family: "Paytone One", "Carme", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 6rem 2rem 0;
+  padding: 2rem 6rem 2rem 0rem;
   cursor: pointer;
   text-shadow: 1px 1px 0 #f8a055;
-  transition: color 0.2s ease-out, text-shadow 0.2s 0.1s ease-in; }
-  h2#favourite-link:hover {
+  transition: color 0.2s ease-out, text-shadow 0.2s 0.1s ease-in;
+  text-transform: capitalize; }
+  h2#favourite-link:hover,
+  .favourite-link:hover {
     text-shadow: 2px 2px 0 #4897d8;
     color: #fa6e59; }
 
@@ -84,9 +87,36 @@ h2#favourite-link {
   text-transform: uppercase; }
 
 .form-title {
-  padding: 2rem;
+  padding: 4rem 2rem;
   text-transform: capitalize;
   font-family: "Paytone One", "Carme", sans-serif; }
+  .form-title-highlight {
+    color: #f8a055;
+    text-shadow: 1px 2px 0px #505050; }
+
+#clear-favourites {
+  color: #fa6e59;
+  padding: 2rem 0;
+  background: #f2bf79;
+  border: 1px solid rgba(250, 110, 89, 0.5);
+  display: block;
+  cursor: pointer;
+  position: relative; }
+  #clear-favourites:hover::before {
+    width: 80%; }
+  #clear-favourites:hover > i {
+    transition: transform 0.5s ease-out;
+    transform-origin: bottom;
+    transform: rotate(-30deg) translate(2rem, 1rem); }
+  #clear-favourites::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 1%;
+    height: 100%;
+    background: inherit;
+    transition: width 0.3s ease-in; }
 
 .field-invalid {
   box-shadow: 0 0 3px 1px #fa3333; }
@@ -106,6 +136,9 @@ h2#favourite-link {
 .form-invalid {
   background-color: #ffcdb6;
   border: 1px solid #ff9d4c; }
+
+.p-2 {
+  padding: 2rem; }
 
 @keyframes load-drinks {
   100% {
@@ -399,6 +432,7 @@ h2#favourite-link {
 
 .api-res-drink-element {
   position: relative;
+  margin: 1rem;
   width: 27rem;
   box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
   margin-bottom: 3rem;
@@ -502,7 +536,7 @@ select#drinks-input {
     pointer-events: none;
     content: "";
     height: calc(4rem + 1px);
-    width: 3.1rem;
+    width: 2.5rem;
     position: absolute;
     background: #ffdb5c;
     z-index: 2;
@@ -559,24 +593,44 @@ option {
   box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.3); }
 
-.form-drinks {
-  margin-top: 5rem; }
-  .form-drinks-input-text {
-    border: rgba(0, 0, 0, 0.1) solid 1px;
-    outline: none;
-    padding: 1rem;
-    color: green;
-    font-weight: bold;
-    min-height: 4rem;
-    width: 85%; }
-    .form-drinks-input-text::-webkit-input-placeholder {
-      color: transparent; }
-    .form-drinks-input-text:placeholder-shown ~ .form-label-name {
-      color: #4897d8;
-      transform: translateY(0); }
+.form-drinks-input-check {
+  width: 10rem;
+  height: 4rem;
+  position: absolute;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%); }
+  .form-drinks-input-check:checked + .form-custom-checkbox::before {
+    color: #505050;
+    text-shadow: 1px 1px 0 #f8a055; }
+  .form-drinks-input-check:checked + .form-custom-checkbox::after {
+    color: #fa6e59;
+    text-shadow: 1px 2px 0 #4897d8; }
+  .form-drinks-input-check:checked ~ .form-label > .form-check-title {
+    color: transparent; }
+
+.form-drinks-input-text {
+  border: rgba(0, 0, 0, 0.1) solid 1px;
+  outline: none;
+  padding: 1rem;
+  color: green;
+  font-weight: bold;
+  min-height: 4rem;
+  width: 85%; }
+  .form-drinks-input-text::-webkit-input-placeholder {
+    color: transparent; }
+  .form-drinks-input-text:placeholder-shown ~ .form-label-name {
+    color: #4897d8;
+    transform: translateY(0); }
+
+.form-label {
+  margin-left: 14%; }
+
+.form-check-title {
+  color: currentColor; }
 
 .form-container {
-  min-height: 20rem; }
+  min-height: 30rem; }
 
 .form-group {
   margin: 2rem 0;
@@ -588,7 +642,7 @@ option {
     pointer-events: none;
     content: "";
     height: 4rem;
-    width: 3.5rem;
+    width: 3rem;
     position: absolute;
     background: #4897d8;
     z-index: 2;
@@ -615,6 +669,31 @@ option {
   left: 1rem;
   transition: all 0.2s;
   pointer-events: none; }
+
+.form-custom-checkbox {
+  position: relative;
+  height: 4rem;
+  width: 2rem;
+  font-family: "Font Awesome 5 Free";
+  left: 4rem;
+  pointer-events: none;
+  top: 1rem; }
+  .form-custom-checkbox::before {
+    content: "\f0f4";
+    font-size: 3rem;
+    left: 0;
+    padding: 1rem 2rem;
+    transition: all 0.2s;
+    color: #fa6e59;
+    text-shadow: 1px 2px 0 #4897d8; }
+  .form-custom-checkbox::after {
+    content: "\f7a0";
+    font-size: 3rem;
+    right: 0;
+    padding: 1rem 2rem;
+    transition: all 0.2s;
+    color: #505050;
+    text-shadow: 1px 1px 0 #f8a055; }
 
 .select-box-icon-selected {
   text-shadow: 1px 2px 0 rgba(72, 151, 216, 0.5);
