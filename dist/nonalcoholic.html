@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
     <title>BAR-APP</title>
     <link
       href="https://fonts.googleapis.com/css?family=Carme|Paytone+One"
@@ -16,7 +15,7 @@
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header class="header">
@@ -24,6 +23,7 @@
       <p class="header-description flex">
         Search your favourite drinks from hundreds of recepies!
       </p>
+
       <a class="flex header-fav-wrap" href="favourites.html"
         ><h2 id="favourite-link">favourites</h2>
         <i class="far fa-star header-fav-icon"></i
@@ -34,34 +34,35 @@
       <div class="container">
         <!-- SIDE NAVIGATION  -->
         <section class="side-cmd">
-          <!-- form -->
+          <!--form -->
+
           <div class="form-container">
             <h3 class="form-title">
-              Select By <span class="form-title-highlight">Category</span>
+              Select if <span class="form-title-highlight">Alcoholic</span>
             </h3>
             <form class="form-drinks" action="#" id="search-drinks-form">
               <div class="form-group">
-                <div class="select-box">
-                  <i class="fas fa-beer select-box-icon"></i>
-                  <select
-                    class="form-drinks-input-select"
-                    name="search-by-category"
-                    id="drinks-input"
-                  >
-                    <option value="" class="default">&nbsp;</option>
-                  </select>
-                  <label for="search-by-category" class="form-label-select"
-                    >CATEGORY</label
-                  >
-                </div>
+                <input
+                  type="checkbox"
+                  class="form-drinks-input-check"
+                  name="search-by-alcoholic"
+                  id="drinks-input"
+                  checked
+                />
+                <div class="form-custom-checkbox"></div>
+                <br />
+                <label for="search-by-alcoholic" class="form-label">
+                  <span class="form-check-title">NON </span>ALCOHOLIC
+                </label>
               </div>
+
               <div class="form-group flex">
                 <input type="submit" value="search" id="submit-button" />
-                <i class="fas fa-beer submit-icon"></i>
+                <i class="fas fa-mug-hot submit-icon"></i>
               </div>
             </form>
           </div>
-          <!--end form-->
+          <!--form end-->
           <!-- menu-->
           <div class="resp-menu-wrap">
             <nav class="resp-menu">
@@ -71,7 +72,7 @@
             </nav>
           </div>
           <!-- menu end-->
-          <!-- nav -->
+          <!--nav-->
           <nav class="side-cmd-nav">
             <ul class="side-cmd-list">
               <li class="side-cmd-list-item">
@@ -96,13 +97,13 @@
               </li>
             </ul>
           </nav>
-          <!-- nav  end-->
+
+          <!--nav end-->
         </section>
         <!-- SIDE MAIN  -->
         <section class="side-results">
           <div class="result-container">
             <div class="popup" id="popup-details"></div>
-            <h2></h2>
             <div class="api-res-wrapper" id="result">
               <!-- HERE THE CONTENT FROM THE API-->
             </div>
@@ -113,9 +114,9 @@
     </main>
 
     <footer></footer>
-    <script src="../js/DrinksApi.js"></script>
-    <script src="../js/DrinksDB.js"></script>
-    <script src="../js/UI.js"></script>
-    <script src="../js/app.js"></script>
+    <script src="js/DrinksApi.js"></script>
+    <script src="js/DrinksDB.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>
