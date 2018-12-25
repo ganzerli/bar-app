@@ -9,6 +9,10 @@
         left: 50%;
         opacity: 0;
         transform: translateX(-50%);
+        @include responsive(tab-portrait) {
+          left: 6rem;
+          transform: none;
+        }
         &:checked {
           & + .form-custom-checkbox {
             &::before {

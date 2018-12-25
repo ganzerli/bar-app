@@ -127,6 +127,12 @@ h2#favourite-link,
     height: 100%;
     background: inherit;
     transition: width 0.3s ease-in; }
+    @media (max-width: 56.25em) {
+      #clear-favourites::before {
+        background: transparent;
+        display: none;
+        visibility: hidden;
+        opacity: 0; } }
   @media (max-width: 56.25em) {
     #clear-favourites {
       width: 50%;
@@ -649,6 +655,10 @@ option {
   left: 50%;
   opacity: 0;
   transform: translateX(-50%); }
+  @media (max-width: 56.25em) {
+    .form-drinks-input-check {
+      left: 6rem;
+      transform: none; } }
   .form-drinks-input-check:checked + .form-custom-checkbox::before {
     color: #505050;
     text-shadow: 1px 1px 0 #f8a055; }
@@ -754,7 +764,8 @@ option {
 .resp-menu {
   position: absolute;
   right: 0;
-  top: -6rem; }
+  top: -6rem;
+  display: none; }
   .resp-menu-wrap {
     position: relative; }
     .resp-menu-wrap-active + .side-cmd-nav {
@@ -775,3 +786,6 @@ option {
     background: #f8a055; }
   .resp-menu-active > .resp-menu-stick:nth-child(3) {
     background: #ffdb5c; }
+  @media (max-width: 56.25em) {
+    .resp-menu {
+      display: block; } }

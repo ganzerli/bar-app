@@ -167,6 +167,7 @@ function popupListener(e) {
     // if clicked on the content the popup stays
   } else if (e.target.classList.contains("api-res-close")) {
     document.getElementById("popup-details").classList.remove("popup-active");
+    refreshFavourites();
   } else if (e.target.classList.contains("save-drink")) {
     // clicking the button the object get saved
     if (e.target.classList.contains("button-saved")) {
@@ -190,15 +191,16 @@ function popupListener(e) {
       }
     }
   } else {
-    //refresh the result
-    if (document.querySelector("#main-favourites-reference")) {
-      document.querySelector("#result").innerHTML = "";
-      ui.loadFavourites();
-    } else {
-      //sign as favourite in the result
-    }
     // clicking ouside the body of the modal closes
     e.target.classList.remove("popup-active");
+    refreshFavourites();
+  }
+}
+
+function refreshFavourites() {
+  if (document.querySelector("#main-favourites-reference")) {
+    document.querySelector("#result").innerHTML = "";
+    ui.loadFavourites();
   }
 }
 

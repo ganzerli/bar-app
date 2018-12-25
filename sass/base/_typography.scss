@@ -81,6 +81,12 @@ h2#favourite-link,
     height: 100%;
     background: inherit;
     transition: width 0.3s ease-in;
+    @include responsive(tab-portrait) {
+      background: transparent;
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
   }
   @include responsive(tab-portrait) {
     width: 50%;
