@@ -538,7 +538,8 @@ h2#favourite-link,
     background: #4897d8; }
   .api-res-extrainfo-comment {
     background: whitesmoke;
-    color: #505050; }
+    color: #505050;
+    padding: 1rem; }
 
 .api-res-icon {
   font-size: 2rem;
