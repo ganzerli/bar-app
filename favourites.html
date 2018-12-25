@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FAVOURITES</title>
+    <link href="https://fonts.googleapis.com/css?family=Carme|Paytone+One" rel="stylesheet"> 
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous"
+  />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header" id="main-favourites-reference">
+      <h1 id="app-title">BAR APP</h1>
+      <p class="header-description flex">
+          Search your favourite drinks from hundreds of recepies!
+      </p>
+      <a class="flex header-fav-wrap" href="favourites.html"><h2 id="favourite-link">favourites</h2><i class="far fa-star header-fav-icon"></i></a>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <!-- SIDE NAVIGATION  -->
+        <section class="side-cmd">
+          <!-- form -->
+          <div class="form-container">
+              <h2 class="favourite-link p-2">Favourites</h2>
+              <h2 id="clear-favourites">clear favourites <i class="far fa-trash-alt" id="clear-favourites-icon"></i></h2>
+            </div>
+          <!-- form end-->
+          <!-- menu-->
+          <div class="resp-menu-wrap">
+              <nav class="resp-menu">
+                <div class="resp-menu-stick"></div>
+                <div class="resp-menu-stick"></div>
+                <div class="resp-menu-stick"></div>
+              </nav>
+            </div>
+            <!-- menu end-->
+          <!-- nav -->
+          <nav class="side-cmd-nav">
+              <ul class="side-cmd-list">
+                <li class="side-cmd-list-item">
+                  <a href="index.html" class="side-cmd-link"> NAME </a>
+                  <i class="fas fa-wine-bottle side-cmd-list-icon"></i>
+                </li>
+                <li class="side-cmd-list-item">
+                  <a href="ingredients.html" class="side-cmd-link">
+                    INGRDIENTS
+                  </a>
+                  <i class="fas fa-cocktail side-cmd-list-icon"></i>
+                </li>
+                <li class="side-cmd-list-item">
+                  <a href="category.html" class="side-cmd-link"> CATEGORY </a>
+                  <i class="fas fa-beer side-cmd-list-icon"></i>
+                </li>
+                <li class="side-cmd-list-item">
+                  <a href="nonalcoholic.html" class="side-cmd-link">
+                    NON ALCOHOLICS
+                  </a>
+                  <i class="fas fa-mug-hot side-cmd-list-icon"></i>
+                </li>
+              </ul>
+            </nav>
+            <!-- nav  end-->
+        
+        </section>
+        <!-- SIDE MAIN  -->
+        <section class="side-results">
+          <div class="result-container">
+            &nbsp;
+            <div class="popup" id="popup-details"></div>
+            <div class="api-res-wrapper" id="result">
+              <!-- HERE THE CONTENT FROM THE API-->
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- end container-->
+    </main>
+
+    <footer></footer>
+    <script src="js/DrinksDB.js"></script>
+    <script src="js/DrinksApi.js""></script>
+    <script src="js/UI.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
