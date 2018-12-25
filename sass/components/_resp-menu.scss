@@ -14,16 +14,22 @@
     margin: 0.5rem 1rem;
     background: blue;
   }
+  &-stick {
+    background: $yellow;
+    transition: all 0.4s;
+    border: 1px solid rgba($orange, 0.5);
+    border-radius: 2px;
+  }
   &-active {
     & > .resp-menu-stick {
-      background: $yellow;
-
       &:nth-child(1) {
-        background: $blue;
+        background: $red;
       }
       &:nth-child(2) {
+        background: $orange;
       }
       &:nth-child(3) {
+        background: $yellow;
       }
     }
   }

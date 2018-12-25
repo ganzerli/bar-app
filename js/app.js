@@ -134,6 +134,7 @@ function delegationForButtons(e) {
   // if btn details get clicked
 
   if (e.target.classList.contains("open-modal")) {
+    //opening the modal
     getIdDrinkDetails(e.target.id);
     popupMemory = e.target.parentElement.querySelector(".save-drink");
   } else if (e.target.classList.contains("save-drink")) {
@@ -164,6 +165,8 @@ function popupListener(e) {
   //when clicking check where is been clicked
   if (e.target.classList.contains("popup-content")) {
     // if clicked on the content the popup stays
+  } else if (e.target.classList.contains("api-res-close")) {
+    document.getElementById("popup-details").classList.remove("popup-active");
   } else if (e.target.classList.contains("save-drink")) {
     // clicking the button the object get saved
     if (e.target.classList.contains("button-saved")) {
@@ -194,7 +197,7 @@ function popupListener(e) {
     } else {
       //sign as favourite in the result
     }
-    // clicking ouside the modal closes
+    // clicking ouside the body of the modal closes
     e.target.classList.remove("popup-active");
   }
 }

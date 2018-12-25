@@ -234,6 +234,7 @@ class UI {
     <div class="popup-content" id="popup-info" name="${
       detailsObject.strDrink
     }" image="${detailsObject.strDrinkThumb}" >
+    <span class="api-res-close">&#128942;</span>
   <h3 class="api-res-name">${detailsObject.strDrink}</h3>
   <figure class="popup-figure">
     <img

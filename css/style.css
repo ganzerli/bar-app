@@ -349,6 +349,7 @@ h2#favourite-link,
   display: none; }
   .popup-active {
     position: fixed;
+    top: 5rem;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -364,7 +365,12 @@ h2#favourite-link,
     transform: translateX(-20%);
     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative; }
+    @media (max-width: 56.25em) {
+      .popup-content {
+        width: 100%;
+        transform: none; } }
   .popup-img {
     max-height: 30vh; }
 
@@ -532,6 +538,15 @@ h2#favourite-link,
   font-size: 2rem;
   padding: 0 1rem;
   pointer-events: none; }
+
+.api-res-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background: #fa6e59;
+  color: #ffffff;
+  cursor: pointer; }
 
 .textarea-comment {
   display: none; }
@@ -749,7 +764,14 @@ option {
     height: 4px;
     margin: 0.5rem 1rem;
     background: blue; }
-  .resp-menu-active > .resp-menu-stick {
+  .resp-menu-stick {
+    background: #ffdb5c;
+    transition: all 0.4s;
+    border: 1px solid rgba(248, 160, 85, 0.5);
+    border-radius: 2px; }
+  .resp-menu-active > .resp-menu-stick:nth-child(1) {
+    background: #fa6e59; }
+  .resp-menu-active > .resp-menu-stick:nth-child(2) {
+    background: #f8a055; }
+  .resp-menu-active > .resp-menu-stick:nth-child(3) {
     background: #ffdb5c; }
-    .resp-menu-active > .resp-menu-stick:nth-child(1) {
-      background: #4897d8; }
