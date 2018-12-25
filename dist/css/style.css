@@ -673,7 +673,7 @@ option {
   border: rgba(0, 0, 0, 0.1) solid 1px;
   outline: none;
   padding: 1rem;
-  color: green;
+  color: #4897d8;
   font-weight: bold;
   min-height: 4rem;
   width: 85%; }
