@@ -102,7 +102,8 @@ h2#favourite-link,
     text-shadow: 1px 2px 0px #505050; }
   @media (max-width: 56.25em) {
     .form-title {
-      padding: 0; } }
+      padding: 0;
+      margin-bottom: 4rem; } }
 
 #clear-favourites {
   color: #fa6e59;
@@ -559,12 +560,10 @@ h2#favourite-link,
   display: none; }
   .textarea-comment-active {
     display: unset;
-    margin: 0.3rem;
-    padding: 0.2rem;
     position: absolute;
     font-family: "Carme", "Paytone One", sans-serif;
     font-weight: 600;
-    bottom: 1rem;
+    bottom: 0;
     left: 0;
     color: #4897d8;
     outline: none;
