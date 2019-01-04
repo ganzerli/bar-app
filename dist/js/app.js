@@ -36,10 +36,7 @@ function eventListeners() {
     menu.addEventListener("click", toggleMenu, event);
   }
 }
-/*
- * THE ANIMATION DELAY IS IN UI , WHEN THE ELEMNT GET CREATED  AND ADDING EACH TO THE RESUL
- */
-
+// activate listeners
 eventListeners();
 
 // get Drinks function
@@ -95,10 +92,10 @@ function getDrinks(e) {
           // if the object returned is null
           ui.printMessage(`no matches for: ${drinkToSearch}`);
         } else {
-          //display ingredients, res.drinks is the object with the array
+          // everithing ok display ingredients, res.drinks is the object with the array
           const resultTitle = document.querySelector(".result-container > h2");
           if (resultTitle) {
-            // in Alcoholic there is not result title
+            // in Alcoholic.html there is not result title
             resultTitle.innerHTML = drinkToSearch.split("_").join(" ");
             resultTitle.classList.add("welcome-result");
           }

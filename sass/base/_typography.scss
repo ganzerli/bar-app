@@ -52,6 +52,7 @@ h2#favourite-link,
   }
   @include responsive(tab-portrait) {
     padding: 0;
+    margin-bottom: 4rem;
   }
 }
 #clear-favourites {

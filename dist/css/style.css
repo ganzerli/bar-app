@@ -102,7 +102,8 @@ h2#favourite-link,
     text-shadow: 1px 2px 0px #505050; }
   @media (max-width: 56.25em) {
     .form-title {
-      padding: 0; } }
+      padding: 0;
+      margin-bottom: 4rem; } }
 
 #clear-favourites {
   color: #fa6e59;
