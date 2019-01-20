@@ -1,0 +1,52 @@
+.btn-back-portfolio,
+.btn-back-portfolio:visited,
+.btn-back-portfolio:link {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bolder;
+  transform-origin: left center;
+  padding: 5px 20px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border: 3px solid #ff8859;
+  margin: 1rem 0;
+  position: fixed;
+  top: calc(100vh - 56px);
+  transform: scaleX(0.08);
+  transition: all 0.25s ease-in 0.1s;
+  background: #ff8859; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffdc21,
+    #ff8859
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffdc21,
+    #ff8859
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+.btn-back-portfolio:hover {
+  transform: scaleX(1);
+  letter-spacing: 4px;
+}
+.btn-back-portfolio:hover:after {
+  transform: scaleX(0);
+}
+.btn-back-portfolio:after {
+  content: "";
+  border: 3px solid #ff8859;
+  position: absolute;
+  height: calc(100% + 6px);
+  width: 100%;
+  top: -3px;
+  left: 0;
+  transform-origin: right center;
+  transition: transform 0.2s ease-out;
+  background: #ff8859; /* fallback for old browsers */
+  border: 3px solid #ff8859;
+}
