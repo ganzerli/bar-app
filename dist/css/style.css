@@ -560,10 +560,12 @@ h2#favourite-link,
   display: none; }
   .textarea-comment-active {
     display: unset;
+    margin: 0.3rem;
+    padding: 0.2rem;
     position: absolute;
     font-family: "Carme", "Paytone One", sans-serif;
     font-weight: 600;
-    bottom: 0;
+    bottom: 1rem;
     left: 0;
     color: #4897d8;
     outline: none;
